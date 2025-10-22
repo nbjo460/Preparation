@@ -1,12 +1,12 @@
 from typing import Tuple
 
 import flet as ft
-from pymavlink import mavutil
-from pymavlink.CSVReader import CSVMessage
+import flet_map
 
 from gui.main_window import MainWindow
 from gui.map_view import MapView
 from gui.upload_file_button import UploadFileButton
+from utils.coordinate_extractor import CoordinateExtractor
 
 
 class AppManager:
@@ -18,7 +18,7 @@ class AppManager:
         self.upload = UploadFileButton(
             on_file_selected_callback=self.add_coords_from_file, file_picker=self.file_picker
         )
-        self.map_view = MapView()
+        self.map_view : MapView= MapView()
         self.window = MainWindow(self.upload, self.map_view)
 
         self.page.add(self.window.layout)
@@ -33,31 +33,17 @@ class AppManager:
 
         self.map_view.clear_map()
 
-        coordinates: list[Tuple[float, float]] = self.read_coordinates(path)
+        coordinates: list[Tuple[float, float]] = CoordinateExtractor.from_bin(path)
         for coordinate in coordinates:
             self.map_view.append_coordinates(coordinate)
 
+        self.map_view.mapp.center_on(point=flet_map.MapLatitudeLongitude(*coordinates[0]), zoom=13)
+
+
         self.page.update()
-        print("printed")
+        print(f"printed {len(coordinates)}")
 
-    @staticmethod
-    def read_coordinates(path: str) -> list[Tuple[float, float]]:
-        mav: CSVMessage = mavutil.mavlink_connection(path)
 
-        # רשימה לאחסון נקודות
-        coordinates: list[Tuple[float, float]] = []
-
-        while True:
-            msg: mav = mav.recv_match(type=["GPS"])
-            if msg is None:
-                break
-
-            if msg.I == 1:
-                lat: float = msg.Lat
-                lon: float = msg.Lng
-                coordinates.append((lat, lon))
-
-        return coordinates
 
 
 def main(page: ft.Page) -> None:
