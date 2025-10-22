@@ -13,13 +13,11 @@ class AppManager:
     def __init__(self, page: ft.Page):
         self.page = page
 
-        self.file_picker = self.append_file_picker()
-
-        self.upload = UploadFileButton(
-            on_file_selected_callback=self.add_coords_from_file, file_picker=self.file_picker
+        self.upload_button = UploadFileButton(
+            on_file_selected_callback=self.add_coords_from_file, file_picker=self.append_file_picker()
         )
         self.map_view : MapView= MapView()
-        self.window = MainWindow(self.upload, self.map_view)
+        self.window = MainWindow(self.upload_button, self.map_view)
 
         self.page.add(self.window.layout)
 
@@ -46,8 +44,3 @@ class AppManager:
 
 
 
-def main(page: ft.Page) -> None:
-    AppManager(page)
-
-
-ft.app(target=main)
