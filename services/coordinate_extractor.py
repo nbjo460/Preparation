@@ -1,11 +1,6 @@
-from coordinate_extractor_cy import get_value_by_format
+from coordinate_extractor_cy import  get_value_by_format
 import struct
 import time
-
-    # msgs.append(data)
-    #         i+=1
-    #         if i == 200: break
-    # print(i)
 
 from pymavlink import mavutil
 
@@ -46,11 +41,8 @@ msgs = []
 
 
 fmt_massages = {}
-def read_fmt_massage(data : memoryview, start_offset : int) -> None:
+def read_fmt_massage(data : bytes, start_offset : int) -> None:
     num = start_offset
-    # byte = data[num]
-    # sec_byte = data[num+1]
-    # if byte == 0xA3 and sec_byte == 0x95:
     is_fmt_msg = data[num + 2] == 0x80
     if is_fmt_msg:
         fmt_type = data[num + 3]
@@ -70,28 +62,28 @@ def read_fmt_massage(data : memoryview, start_offset : int) -> None:
     elif not is_fmt_msg:
         raise "No fmt."
 
-TYPE_MAP = {
-    'a': ('32h', 2 * 32),   # int16_t[32]
-    'b': ('b', 1),          # int8_t
-    'B': ('B', 1),          # uint8_t
-    'h': ('h', 2),          # int16_t
-    'H': ('H', 2),          # uint16_t
-    'i': ('i', 4),          # int32_t
-    'I': ('I', 4),          # uint32_t
-    'f': ('f', 4),          # float
-    'd': ('d', 8),          # double
-    'n': ('4s', 4),         # char[4]
-    'N': ('16s', 16),       # char[16]
-    'Z': ('64s', 64),       # char[64]
-    'c': ('h', 2),          # int16_t (ערך בודד, לא מערך)
-    'C': ('H', 2 ), # uint16_t * 100
-    'e': ('i', 4),          # int32_t (ערך בודד, לא מערך)
-    'E': ('I', 4), # uint32_t * 100
-    'L': ('i', 4),          # int32_t latitude/longitude in 1e-7 degrees
-    'M': ('B', 1),          # uint8_t flight mode
-    'q': ('q', 8),          # int64_t
-    'Q': ('Q', 8),          # uint64_t
-}
+# TYPE_MAP = {
+#     'a': ('32h', 2 * 32),   # int16_t[32]
+#     'b': ('b', 1),          # int8_t
+#     'B': ('B', 1),          # uint8_t
+#     'h': ('h', 2),          # int16_t
+#     'H': ('H', 2),          # uint16_t
+#     'i': ('i', 4),          # int32_t
+#     'I': ('I', 4),          # uint32_t
+#     'f': ('f', 4),          # float
+#     'd': ('d', 8),          # double
+#     'n': ('4s', 4),         # char[4]
+#     'N': ('16s', 16),       # char[16]
+#     'Z': ('64s', 64),       # char[64]
+#     'c': ('h', 2),          # int16_t (ערך בודד, לא מערך)
+#     'C': ('H', 2 ), # uint16_t * 100
+#     'e': ('i', 4),          # int32_t (ערך בודד, לא מערך)
+#     'E': ('I', 4), # uint32_t * 100
+#     'L': ('i', 4),          # int32_t latitude/longitude in 1e-7 degrees
+#     'M': ('B', 1),          # uint8_t flight mode
+#     'q': ('q', 8),          # int64_t
+#     'Q': ('Q', 8),          # uint64_t
+# }
 
 
 STRUCT_CACHE = {}
@@ -141,7 +133,6 @@ def get_struct_for_type(type_msg: int, types: str):
 
 
 def read_massages(data : bytes) -> None:
-    data : memoryview = memoryview(data)
     num : int = 0
     length_data = len(data)
     while num < length_data:
@@ -163,9 +154,6 @@ def read_massages(data : bytes) -> None:
                 format_msg = exist_msg_config["format"]
                 cols = exist_msg_config["cols"]
                 payload = data[num + 3: num + length]
-                # payload = data[num: num + length]
-                # print(name, length, ' '.join(f'{b:02X}' for b in payload), format_msg)
-                # get_value_by_format(payload ,format_msg, cols)
                 get_value_by_format(payload ,format_msg, cols, type_msg)
 
                 num += length
@@ -174,21 +162,20 @@ def read_massages(data : bytes) -> None:
             print(f"{header[0]:02x}")
             num+=1
             # raise "wrong offset"
-        # num +=1
 
-def decode_msg(msg1 : memoryview)-> str:
+def decode_msg(msg1 : bytes)-> str:
     # try:
-    return bytes(msg1).partition(b'\x00')[0].decode('ascii', errors="ignore")
+    return msg1.partition(b'\x00')[0].decode('ascii', errors="ignore")
     # except Exception:
     #     return str(msg1)
 
 
 with open(path, "rb") as f:
     data = f.read()
+
     start = time.time()
     read_massages(data)
     end = time.time()
     print(f"Elapsed time: {end - start:.6f} seconds")
-    # print(fmt_massages.keys())
 
 

@@ -5,6 +5,13 @@ setup(
     name="coordinate_extractor_cy",
     ext_modules=cythonize(
         "coordinate_extractor_cy.pyx",
-        compiler_directives={'language_level': "3"}
+        annotate=True,
+        compiler_directives={
+            "language_level": 3,
+            "boundscheck": False,
+            "wraparound": False,
+            "initializedcheck": False,
+            "cdivision": True,
+        },
     ),
 )
