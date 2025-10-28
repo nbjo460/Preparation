@@ -1,4 +1,4 @@
-from coordinate_extractor_cy import  get_value_by_format
+# from coordinate_extractor_cy import  get_value_by_format
 import struct
 import time
 
@@ -62,28 +62,28 @@ def read_fmt_massage(data : bytes, start_offset : int) -> None:
     elif not is_fmt_msg:
         raise "No fmt."
 
-# TYPE_MAP = {
-#     'a': ('32h', 2 * 32),   # int16_t[32]
-#     'b': ('b', 1),          # int8_t
-#     'B': ('B', 1),          # uint8_t
-#     'h': ('h', 2),          # int16_t
-#     'H': ('H', 2),          # uint16_t
-#     'i': ('i', 4),          # int32_t
-#     'I': ('I', 4),          # uint32_t
-#     'f': ('f', 4),          # float
-#     'd': ('d', 8),          # double
-#     'n': ('4s', 4),         # char[4]
-#     'N': ('16s', 16),       # char[16]
-#     'Z': ('64s', 64),       # char[64]
-#     'c': ('h', 2),          # int16_t (ערך בודד, לא מערך)
-#     'C': ('H', 2 ), # uint16_t * 100
-#     'e': ('i', 4),          # int32_t (ערך בודד, לא מערך)
-#     'E': ('I', 4), # uint32_t * 100
-#     'L': ('i', 4),          # int32_t latitude/longitude in 1e-7 degrees
-#     'M': ('B', 1),          # uint8_t flight mode
-#     'q': ('q', 8),          # int64_t
-#     'Q': ('Q', 8),          # uint64_t
-# }
+TYPE_MAP = {
+    'a': ('32h', 2 * 32),   # int16_t[32]
+    'b': ('b', 1),          # int8_t
+    'B': ('B', 1),          # uint8_t
+    'h': ('h', 2),          # int16_t
+    'H': ('H', 2),          # uint16_t
+    'i': ('i', 4),          # int32_t
+    'I': ('I', 4),          # uint32_t
+    'f': ('f', 4),          # float
+    'd': ('d', 8),          # double
+    'n': ('4s', 4),         # char[4]
+    'N': ('16s', 16),       # char[16]
+    'Z': ('64s', 64),       # char[64]
+    'c': ('h', 2),          # int16_t (ערך בודד, לא מערך)
+    'C': ('H', 2 ), # uint16_t * 100
+    'e': ('i', 4),          # int32_t (ערך בודד, לא מערך)
+    'E': ('I', 4), # uint32_t * 100
+    'L': ('i', 4),          # int32_t latitude/longitude in 1e-7 degrees
+    'M': ('B', 1),          # uint8_t flight mode
+    'q': ('q', 8),          # int64_t
+    'Q': ('Q', 8),          # uint64_t
+}
 
 
 STRUCT_CACHE = {}
@@ -117,32 +117,34 @@ def get_struct_for_type(type_msg: int, types: str):
 
 
 
-# def get_value_by_format(payload: memoryview, types: str, cols: str, type_msg: int):
-#     struct_fmt = get_struct_for_type(type_msg, types)
-#     values = struct_fmt.unpack_from(payload)  # פענוח מלא בבת אחת
-#     cols_list = cols.split(",")
-#
-#     result = {}
-#     for col, val, t in zip(cols_list, values, types):
-#         if t in ["c", "C", "e", "E"]:
-#             val *= 100
-#         elif t in ["n", "N", "Z"]:
-#             val = val.partition(b'\x00')[0].decode('ascii', errors='ignore')
-#         result[col] = val
-#     return result
+def get_value_by_format(payload: memoryview, types: str, cols: str, type_msg: int):
+    struct_fmt = get_struct_for_type(type_msg, types)
+    values = struct_fmt.unpack_from(payload)  # פענוח מלא בבת אחת
+    cols_list = cols.split(",")
+
+    result = {}
+    for col, val, t in zip(cols_list, values, types):
+        if t in ["c", "C", "e", "E"]:
+            val *= 100
+        elif t in ["n", "N", "Z"]:
+            val = val.partition(b'\x00')[0].decode('ascii', errors='ignore')
+        result[col] = val
+    return result
 
 
 def read_massages(data : bytes) -> None:
+
     num : int = 0
     length_data = len(data)
+    # counter = 0
     while num < length_data:
         header = data[num : num + 2]
         is_new_massage = header[0] == 0xA3 and header[1] == 0x95
 
         if is_new_massage:
+            # counter+=1
             type_msg = data[num + 2]
             is_fmt = type_msg == 0x80
-
             if is_fmt:
                 read_fmt_massage(data, num)
                 num += 89
@@ -155,7 +157,6 @@ def read_massages(data : bytes) -> None:
                 cols = exist_msg_config["cols"]
                 payload = data[num + 3: num + length]
                 get_value_by_format(payload ,format_msg, cols, type_msg)
-
                 num += length
 
         elif not is_new_massage:
