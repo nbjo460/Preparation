@@ -2,10 +2,14 @@ import logging
 from logging.handlers import RotatingFileHandler
 import os
 
+from utils.config import LoggerConfig
+
+
 class AppLogger:
     _initialized_loggers = set()
 
-    def __init__(self, name: str = None, log_filename: str = "logs/app.log"):
+    def __init__(self, name: str = None):
+        log_filename: str = LoggerConfig.file_name
         os.makedirs(os.path.dirname(log_filename) or ".", exist_ok=True)
 
         if not name:

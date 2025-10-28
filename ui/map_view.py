@@ -1,33 +1,32 @@
 import flet as ft
-import flet_map as my_map
+import flet_map
 
 from utils.logger import AppLogger
 
 # TODO create file config.json
 # TODO create file config.py, this file read config.json
-# TODO create gitignore
 
 class MapView:
     def __init__(self) -> None:
         self.logger = AppLogger(self.__class__.__name__)
 
-        self.polyline_ref: ft.Ref = ft.Ref[ # TODO need clear name
-            my_map.PolylineLayer]()
-        self.config = self.map_config() # TODO change the name of the var
+        self.polyline_route_ref: ft.Ref = ft.Ref[
+            flet_map.PolylineLayer]()
+        self.map_setting = self.init_map()
         self.map: ft.Container = ft.Container(
-            self.config,
+            self.map_setting,
             expand=True,
             padding=10,
         )
 
-    def map_config(self) -> my_map.Map:#TODO change the name of the function
-        return my_map.Map(
+    def init_map(self) -> flet_map.Map:
+        return flet_map.Map(
             expand=True,
-            initial_center=my_map.MapLatitudeLongitude(31.5, 34.9), #TODO add to config file
+            initial_center=flet_map.MapLatitudeLongitude(31.5, 34.9), #TODO add to config file
             initial_zoom=9, # TODO add to config.json
             layers=[
-                my_map.TileLayer(url_template="https://tile.openstreetmap.org/{z}/{x}/{y}.png"), # TODO add to config.json
-                self._generate_polyline()
+                flet_map.TileLayer(url_template="https://tile.openstreetmap.org/{z}/{x}/{y}.png"), # TODO add to config.json
+                self._generate_polyline_layer()
             ],
         )
 
@@ -38,21 +37,21 @@ class MapView:
             if counter % 10 == 0:
                 self.logger.debug(f"Coordinate: {coordinate}, is num: {counter}")
 
-        self.config.center_on(point= my_map.MapLatitudeLongitude(*coordinates[0]), zoom=13) #TODO add the number to config file
+        self.map_setting.center_on(point= flet_map.MapLatitudeLongitude(*coordinates[0]), zoom=13) #TODO add the number to config file
 
     def _append_coordinate(self, coordinate: tuple[float, float]) -> None:
-        new_point: my_map.MapLatitudeLongitude = my_map.MapLatitudeLongitude(*coordinate)
-        self.polyline_ref.current.polylines[0].coordinates.append(new_point)
+        new_point: flet_map.MapLatitudeLongitude = flet_map.MapLatitudeLongitude(*coordinate)
+        self.polyline_route_ref.current.polylines[0].coordinates.append(new_point)
 
     def _clear_map(self) -> None:
-        self.polyline_ref.current.polylines[0].coordinates.clear()
+        self.polyline_route_ref.current.polylines[0].coordinates.clear()
 
-    def _generate_polyline(self) -> my_map.PolylineLayer:
-        route_points: list[my_map.MapLatitudeLongitude] = [] # TODO check if needed
-        polyline : my_map.PolylineLayer = my_map.PolylineLayer(
-            ref=self.polyline_ref,
+    def _generate_polyline_layer(self, first_route_points : list[flet_map.MapLatitudeLongitude] = None) -> flet_map.PolylineLayer:
+        route_points: list[flet_map.MapLatitudeLongitude] = first_route_points if first_route_points is not None else []
+        polyline : flet_map.PolylineLayer = flet_map.PolylineLayer(
+            ref=self.polyline_route_ref,
             polylines=[
-                my_map.PolylineMarker(
+                flet_map.PolylineMarker(
                     coordinates=route_points,
                     color=ft.Colors.RED,
                     border_color=ft.Colors.BLACK,
