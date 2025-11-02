@@ -1,17 +1,16 @@
+# setup.py
 from setuptools import setup
 from Cython.Build import cythonize
 
 setup(
-    name="coordinate_extractor_cy",
+    name="mavlink_cython",
     ext_modules=cythonize(
-        "coordinate_extractor_cy.pyx",
-        annotate=True,
+        "py_cy.pyx",
         compiler_directives={
-            "language_level": 3,
-            "boundscheck": False,
-            "wraparound": False,
-            "initializedcheck": False,
-            "cdivision": True,
-        },
+            'language_level': 3,
+            'boundscheck': False,
+            'wraparound': False,
+            'initializedcheck': False,
+        }
     ),
 )
