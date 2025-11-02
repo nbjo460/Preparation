@@ -1,16 +1,7 @@
-# setup.py
 from setuptools import setup
 from Cython.Build import cythonize
 
 setup(
-    name="mavlink_cython",
-    ext_modules=cythonize(
-        "py_cy.pyx",
-        compiler_directives={
-            'language_level': 3,
-            'boundscheck': False,
-            'wraparound': False,
-            'initializedcheck': False,
-        }
-    ),
+    name="fast_get_value",
+    ext_modules=cythonize("fast_get_value.pyx", language_level=3),
 )
