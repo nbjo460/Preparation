@@ -7,9 +7,6 @@
 
 import struct
 
-# -------------------------------
-# TYPE MAP
-# -------------------------------
 cdef dict TYPE_MAP = {
     b'a': (b'32h', 64),
     b'b': (b'b', 1),
@@ -33,37 +30,19 @@ cdef dict TYPE_MAP = {
     b'Q': (b'Q', 8),
 }
 
-# -------------------------------
-# STRUCT CACHE
-# -------------------------------
 cdef dict STRUCT_CACHE = {}
 
 def get_struct(int type_msg, str fmt_str):
-    """
-    מחזיר struct.Struct object מהמטמון או יוצר חדש.
-    """
     key = (type_msg, fmt_str)
     if key not in STRUCT_CACHE:
         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)
         STRUCT_CACHE[key] = struct.Struct(b'<' + fmt)
     return STRUCT_CACHE[key]
 
-# -------------------------------
-# decode_msg
-# -------------------------------
 def decode_msg(bytes msg):
-    """
-    decode עד ה־NULL byte
-    """
     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')
 
-# -------------------------------
-# get_value_by_format
-# -------------------------------
-def get_value_by_format(bytes payload, str types, str cols, int type_msg):
-    """
-    פענוח payload לפי fmt ודינמיקה של TYPE_MAP
-    """
+def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):
     st = get_struct(type_msg, types)
     try:
         values = st.unpack_from(payload)
@@ -73,12 +52,29 @@ def get_value_by_format(bytes payload, str types, str cols, int type_msg):
     cols_list = cols.split(",")
     result = {}
     cdef int i
+    cdef object val
+    cdef str t
+
+    ROUND_SET = frozenset([
+        "Lat", "Lng", "TLat", "TLng", "Pitch", "IPE", "Yaw", "IPN", "IYAW",
+        "DesPitch", "NavPitch", "Temp", "AltE", "VDop", "VAcc", "Roll",
+        "HAGL", "SM", "VWN", "VWE", "IVT", "SAcc", "TAW", "IPD", "ErrRP",
+        "SVT", "SP", "TAT", "GZ", "HDop", "NavRoll", "NavBrg", "TAsp",
+        "HAcc", "DesRoll", "SH", "TBrg", "AX"
+    ])
+
     for i in range(len(cols_list)):
         t = types[i]
         val = values[i]
 
         if t in ("c","C","e","E"):
-            val *= 100
+            val /= 100
+            if to_round and cols_list[i] in ROUND_SET:
+                val = round(val, 7)
+        elif t == "L":
+            val *= 1e-7
+            if to_round and cols_list[i] in ROUND_SET:
+                val = round(val, 7)
         elif t in ("n","N","Z") and isinstance(val, bytes):
             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')
 

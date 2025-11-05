@@ -17,9 +17,11 @@ class LoggerConfig:
             LoggerConfig.flag_does_read_config = True
 
     @property
-
     def file_name(self):
         return LoggerConfig.config["file_name"]
+    @property
+    def logs_folder(self) -> Path:
+        return Path(__file__).parent.parent/"logs"
 
 
 # print(LoggerConfig().file_name)

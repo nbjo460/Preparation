@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "coordinate_extractor_cy",
+        "name": "business_logic.coordinate_extractor_cy",
         "sources": [
             "coordinate_extractor_cy.pyx"
         ]
     },
-    "module_name": "coordinate_extractor_cy"
+    "module_name": "business_logic.coordinate_extractor_cy"
 }
 END: Cython Metadata */
 
@@ -1135,8 +1135,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__coordinate_extractor_cy
-#define __PYX_HAVE_API__coordinate_extractor_cy
+#define __PYX_HAVE__business_logic__coordinate_extractor_cy
+#define __PYX_HAVE_API__business_logic__coordinate_extractor_cy
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1513,16 +1513,16 @@ static const char* const __pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
+struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
 
-/* "coordinate_extractor_cy.pyx":47
+/* "business_logic/coordinate_extractor_cy.pyx":38
  *     key = (type_msg, fmt_str)
  *     if key not in STRUCT_CACHE:
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)             # <<<<<<<<<<<<<<
  *         STRUCT_CACHE[key] = struct.Struct(b'<' + fmt)
  *     return STRUCT_CACHE[key]
 */
-struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr {
+struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   Py_UCS4 __pyx_v_t;
@@ -2027,6 +2027,12 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
   #define __Pyx_PyBaseException_Check(obj) __Pyx_TypeCheck(obj, PyExc_BaseException)
 #endif
 
+/* PyObjectCallNoArg.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
+
+/* pyfrozenset_new.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyFrozenSet_New(PyObject* it);
+
 /* SetStringIndexingError.proto */
 static void __Pyx_SetStringIndexingError(const char* message, int has_gil);
 
@@ -2040,11 +2046,17 @@ static CYTHON_INLINE Py_UCS4 __Pyx_GetItemInt_Unicode_Fast(PyObject* ustring, Py
 
 /* PyLongBinop.proto */
 #if !CYTHON_COMPILING_IN_PYPY
-static CYTHON_INLINE PyObject* __Pyx_PyLong_MultiplyObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+static CYTHON_INLINE PyObject* __Pyx_PyLong_TrueDivideObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
 #else
-#define __Pyx_PyLong_MultiplyObjC(op1, op2, intval, inplace, zerodivision_check)\
-    (inplace ? PyNumber_InPlaceMultiply(op1, op2) : PyNumber_Multiply(op1, op2))
+#define __Pyx_PyLong_TrueDivideObjC(op1, op2, intval, inplace, zerodivision_check)\
+    (inplace ? PyNumber_InPlaceTrueDivide(op1, op2) : PyNumber_TrueDivide(op1, op2))
 #endif
+
+/* PySequenceContains.proto */
+static CYTHON_INLINE int __Pyx_PySequence_ContainsTF(PyObject* item, PyObject* seq, int eq) {
+    int result = PySequence_Contains(seq, item);
+    return unlikely(result < 0) ? result : (result == (eq == Py_EQ));
+}
 
 /* LimitedApiGetTypeDict.proto */
 #if CYTHON_COMPILING_IN_LIMITED_API
@@ -2057,9 +2069,6 @@ static int __Pyx__SetItemOnTypeDict(PyTypeObject *tp, PyObject *k, PyObject *v);
 
 /* FixUpExtensionType.proto */
 static CYTHON_INLINE int __Pyx_fix_up_extension_type_from_spec(PyType_Spec *spec, PyTypeObject *type);
-
-/* PyObjectCallNoArg.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
 
 /* PyObjectCallMethod0.proto */
 static PyObject* __Pyx_PyObject_CallMethod0(PyObject* obj, PyObject* method_name);
@@ -2447,18 +2456,19 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
 
-/* Module declarations from "coordinate_extractor_cy" */
-static PyObject *__pyx_v_23coordinate_extractor_cy_TYPE_MAP = 0;
-static PyObject *__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE = 0;
+/* Module declarations from "business_logic.coordinate_extractor_cy" */
+static PyObject *__pyx_v_14business_logic_23coordinate_extractor_cy_TYPE_MAP = 0;
+static PyObject *__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE = 0;
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "coordinate_extractor_cy"
-extern int __pyx_module_is_main_coordinate_extractor_cy;
-int __pyx_module_is_main_coordinate_extractor_cy = 0;
+#define __Pyx_MODULE_NAME "business_logic.coordinate_extractor_cy"
+extern int __pyx_module_is_main_business_logic__coordinate_extractor_cy;
+int __pyx_module_is_main_business_logic__coordinate_extractor_cy = 0;
 
-/* Implementation of "coordinate_extractor_cy" */
+/* Implementation of "business_logic.coordinate_extractor_cy" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_range;
+static PyObject *__pyx_builtin_round;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_[] = "";
 static const char __pyx_k_B[] = "B";
@@ -2484,6 +2494,11 @@ static const char __pyx_k_q[] = "q";
 static const char __pyx_k_t[] = "t";
 static const char __pyx_k_x[] = "x";
 static const char __pyx_k_4s[] = "4s";
+static const char __pyx_k_AX[] = "AX";
+static const char __pyx_k_GZ[] = "GZ";
+static const char __pyx_k_SH[] = "SH";
+static const char __pyx_k_SM[] = "SM";
+static const char __pyx_k_SP[] = "SP";
 static const char __pyx_k__2[] = "<";
 static const char __pyx_k__3[] = "\000";
 static const char __pyx_k__4[] = ",";
@@ -2494,12 +2509,38 @@ static const char __pyx_k_st[] = "st";
 static const char __pyx_k_16s[] = "16s";
 static const char __pyx_k_32h[] = "32h";
 static const char __pyx_k_64s[] = "64s";
+static const char __pyx_k_IPD[] = "IPD";
+static const char __pyx_k_IPE[] = "IPE";
+static const char __pyx_k_IPN[] = "IPN";
+static const char __pyx_k_IVT[] = "IVT";
+static const char __pyx_k_Lat[] = "Lat";
+static const char __pyx_k_Lng[] = "Lng";
+static const char __pyx_k_SVT[] = "SVT";
+static const char __pyx_k_TAT[] = "TAT";
+static const char __pyx_k_TAW[] = "TAW";
+static const char __pyx_k_VWE[] = "VWE";
+static const char __pyx_k_VWN[] = "VWN";
+static const char __pyx_k_Yaw[] = "Yaw";
 static const char __pyx_k_fmt[] = "fmt";
 static const char __pyx_k_get[] = "get";
 static const char __pyx_k_key[] = "key";
 static const char __pyx_k_msg[] = "msg";
 static const char __pyx_k_pop[] = "pop";
 static const char __pyx_k_val[] = "val";
+static const char __pyx_k_AltE[] = "AltE";
+static const char __pyx_k_HAGL[] = "HAGL";
+static const char __pyx_k_HAcc[] = "HAcc";
+static const char __pyx_k_HDop[] = "HDop";
+static const char __pyx_k_IYAW[] = "IYAW";
+static const char __pyx_k_Roll[] = "Roll";
+static const char __pyx_k_SAcc[] = "SAcc";
+static const char __pyx_k_TAsp[] = "TAsp";
+static const char __pyx_k_TBrg[] = "TBrg";
+static const char __pyx_k_TLat[] = "TLat";
+static const char __pyx_k_TLng[] = "TLng";
+static const char __pyx_k_Temp[] = "Temp";
+static const char __pyx_k_VAcc[] = "VAcc";
+static const char __pyx_k_VDop[] = "VDop";
 static const char __pyx_k_cols[] = "cols";
 static const char __pyx_k_func[] = "__func__";
 static const char __pyx_k_join[] = "join";
@@ -2509,13 +2550,17 @@ static const char __pyx_k_next[] = "next";
 static const char __pyx_k_send[] = "send";
 static const char __pyx_k_spec[] = "__spec__";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_ErrRP[] = "ErrRP";
+static const char __pyx_k_Pitch[] = "Pitch";
 static const char __pyx_k_ascii[] = "ascii";
 static const char __pyx_k_close[] = "close";
 static const char __pyx_k_error[] = "error";
 static const char __pyx_k_range[] = "range";
+static const char __pyx_k_round[] = "round";
 static const char __pyx_k_throw[] = "throw";
 static const char __pyx_k_types[] = "types";
 static const char __pyx_k_value[] = "value";
+static const char __pyx_k_NavBrg[] = "NavBrg";
 static const char __pyx_k_Struct[] = "Struct";
 static const char __pyx_k_decode[] = "decode";
 static const char __pyx_k_enable[] = "enable";
@@ -2524,15 +2569,21 @@ static const char __pyx_k_module[] = "__module__";
 static const char __pyx_k_result[] = "result";
 static const char __pyx_k_struct[] = "struct";
 static const char __pyx_k_values[] = "values";
-static const char __pyx_k_3j_G1IQ[] = "\200\001\360\010\000\005\014\2103\210j\230\001\230\030\240\021\240\"\240G\2501\250I\260Q";
+static const char __pyx_k_3j_G1IQ[] = "\200\001\330\004\013\2103\210j\230\001\230\030\240\021\240\"\240G\2501\250I\260Q";
+static const char __pyx_k_DesRoll[] = "DesRoll";
+static const char __pyx_k_NavRoll[] = "NavRoll";
 static const char __pyx_k_disable[] = "disable";
 static const char __pyx_k_fmt_str[] = "fmt_str";
 static const char __pyx_k_genexpr[] = "genexpr";
 static const char __pyx_k_payload[] = "payload";
+static const char __pyx_k_DesPitch[] = "DesPitch";
+static const char __pyx_k_NavPitch[] = "NavPitch";
 static const char __pyx_k_add_note[] = "add_note";
 static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_set_name[] = "__set_name__";
+static const char __pyx_k_to_round[] = "to_round";
 static const char __pyx_k_type_msg[] = "type_msg";
+static const char __pyx_k_ROUND_SET[] = "ROUND_SET";
 static const char __pyx_k_cols_list[] = "cols_list";
 static const char __pyx_k_isenabled[] = "isenabled";
 static const char __pyx_k_partition[] = "partition";
@@ -2541,21 +2592,21 @@ static const char __pyx_k_get_struct[] = "get_struct";
 static const char __pyx_k_unpack_from[] = "unpack_from";
 static const char __pyx_k_initializing[] = "_initializing";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
-static const char __pyx_k_Q_t7_c_A_AWF_r_q[] = "\200\001\360\010\000\005\014\210:\220Q\330\004\007\200t\2107\220!\330\010\016\210c\220\025\320\026A\300\021\330\010\024\220A\220W\230F\240'\250\021\250%\250r\260\021\330\004\013\210<\220q\230\001";
+static const char __pyx_k_Q_t7_c_A_AWF_r_q[] = "\200\001\330\004\013\210:\220Q\330\004\007\200t\2107\220!\330\010\016\210c\220\025\320\026A\300\021\330\010\024\220A\220W\230F\240'\250\021\250%\250r\260\021\330\004\013\210<\220q\230\001";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_get_value_by_format[] = "get_value_by_format";
-static const char __pyx_k_coordinate_extractor_cy[] = "coordinate_extractor_cy";
 static const char __pyx_k_get_struct_locals_genexpr[] = "get_struct.<locals>.genexpr";
 static const char __pyx_k_coordinate_extractor_cy_pyx[] = "coordinate_extractor_cy.pyx";
-static const char __pyx_k_1Ja_q_q_F_1_Q_U_3aq_E_fAQ_2T_T[] = "\200\001\360\010\000\005\n\210\032\2201\220J\230a\330\004\005\330\010\021\220\022\220<\230q\240\001\330\013\021\220\021\330\010\017\210q\340\004\020\220\004\220F\230!\2301\330\004\r\210Q\340\004\010\210\005\210U\220!\2203\220a\220q\330\010\014\210E\220\021\220!\330\010\016\210f\220A\220Q\340\010\013\2102\210T\220\024\220T\230\024\230Q\330\014\023\2201\330\r\017\210t\2204\220t\2305\240\004\240J\250a\250u\260A\330\014\022\220#\220Z\230q\240\010\250\001\250\022\2507\260!\2609\270A\340\010\016\210a\210y\230\001\230\026\230q\340\004\013\2101";
+static const char __pyx_k_J_1Ja_q_q_F_1_Q_whhiwgWA_L_gWG8[] = "\320\000J\310!\330\004\t\210\032\2201\220J\230a\330\004\005\330\010\021\220\022\220<\230q\240\001\330\013\021\220\021\330\010\017\210q\340\004\020\220\004\220F\230!\2301\330\004\r\210Q\360\n\000\005\021\220\t\230\021\230!\330\010\017\210w\220h\230h\240i\250w\260g\270W\300A\330\010\024\220L\240\010\250\010\260\010\270\010\300\001\330\010\020\220\006\220g\230W\240G\2508\2607\270'\300\021\330\010\017\210v\220W\230F\240(\250+\260Z\270q\330\010\020\220\013\2306\240\030\250\021\360\006\000\005\t\210\005\210U\220!\2203\220a\220q\330\010\014\210E\220\021\220!\330\010\016\210f\220A\220Q\340\010\013\2102\210T\220\024\220T\230\024\230Q\330\014\023\2201\330\014\017\210y\230\004\230I\240Q\240c\250\023\250A\330\020\026\220e\2301\230E\240\021\330\r\017\210s\220!\330\014\023\2201\330\014\017\210y\230\004\230I\240Q\240c\250\023\250A\330\020\026\220e\2301\230E\240\021\330\r\017\210t\2204\220t\2305\240\004\240J\250a\250u\260A\330\014\022\220#\220Z\230q\240\010\250\001\250\022\2507\260!\2609\270A\340\010\016\210a\210y\230\001\230\026\230q\340\004\013\2101";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
+static const char __pyx_k_business_logic_coordinate_extrac[] = "business_logic.coordinate_extractor_cy";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_23coordinate_extractor_cy_10get_struct_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_type_msg, PyObject *__pyx_v_fmt_str); /* proto */
-static PyObject *__pyx_pf_23coordinate_extractor_cy_2decode_msg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_msg); /* proto */
-static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_payload, PyObject *__pyx_v_types, PyObject *__pyx_v_cols, int __pyx_v_type_msg); /* proto */
-static PyObject *__pyx_tp_new_23coordinate_extractor_cy___pyx_scope_struct__genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_10get_struct_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_type_msg, PyObject *__pyx_v_fmt_str); /* proto */
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_2decode_msg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_msg); /* proto */
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_4get_value_by_format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_payload, PyObject *__pyx_v_types, PyObject *__pyx_v_cols, int __pyx_v_type_msg, int __pyx_v_to_round); /* proto */
+static PyObject *__pyx_tp_new_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2594,17 +2645,19 @@ typedef struct {
   #ifdef __Pyx_Coroutine_USED
   PyTypeObject *__pyx_CoroutineType;
   #endif
-  PyObject *__pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
-  PyTypeObject *__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
+  PyObject *__pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
+  PyTypeObject *__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_get;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyBytes_Type__partition;
-  PyObject *__pyx_tuple[16];
+  PyObject *__pyx_tuple[17];
   PyObject *__pyx_codeobj_tab[4];
-  PyObject *__pyx_string_tab[87];
+  PyObject *__pyx_string_tab[136];
+  PyObject *__pyx_float_1eneg_7;
   PyObject *__pyx_int_1;
   PyObject *__pyx_int_2;
   PyObject *__pyx_int_4;
+  PyObject *__pyx_int_7;
   PyObject *__pyx_int_8;
   PyObject *__pyx_int_16;
   PyObject *__pyx_int_64;
@@ -2612,8 +2665,8 @@ typedef struct {
 /* #### Code section: module_state_contents ### */
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *__pyx_freelist_23coordinate_extractor_cy___pyx_scope_struct__genexpr[8];
-int __pyx_freecount_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
+struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *__pyx_freelist_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr[8];
+int __pyx_freecount_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
 #endif
 /* CommonTypesMetaclass.module_state_decls */
 PyTypeObject *__pyx_CommonTypesMetaclassType;
@@ -2661,88 +2714,137 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_b_32h __pyx_string_tab[2]
 #define __pyx_kp_b_4s __pyx_string_tab[3]
 #define __pyx_kp_b_64s __pyx_string_tab[4]
-#define __pyx_n_b_B __pyx_string_tab[5]
-#define __pyx_n_b_C __pyx_string_tab[6]
-#define __pyx_n_b_E __pyx_string_tab[7]
-#define __pyx_n_b_H __pyx_string_tab[8]
-#define __pyx_n_b_I __pyx_string_tab[9]
-#define __pyx_n_b_L __pyx_string_tab[10]
-#define __pyx_n_b_M __pyx_string_tab[11]
-#define __pyx_n_b_N __pyx_string_tab[12]
-#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[13]
-#define __pyx_n_b_Q __pyx_string_tab[14]
-#define __pyx_n_u_Struct __pyx_string_tab[15]
-#define __pyx_n_b_Z __pyx_string_tab[16]
-#define __pyx_kp_b__2 __pyx_string_tab[17]
-#define __pyx_kp_b__3 __pyx_string_tab[18]
-#define __pyx_kp_u__4 __pyx_string_tab[19]
-#define __pyx_kp_u__5 __pyx_string_tab[20]
-#define __pyx_n_b_a __pyx_string_tab[21]
-#define __pyx_kp_u_add_note __pyx_string_tab[22]
-#define __pyx_n_u_ascii __pyx_string_tab[23]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[24]
-#define __pyx_n_b_b __pyx_string_tab[25]
-#define __pyx_n_b_c __pyx_string_tab[26]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[27]
-#define __pyx_n_u_close __pyx_string_tab[28]
-#define __pyx_n_u_cols __pyx_string_tab[29]
-#define __pyx_n_u_cols_list __pyx_string_tab[30]
-#define __pyx_n_u_coordinate_extractor_cy __pyx_string_tab[31]
-#define __pyx_kp_u_coordinate_extractor_cy_pyx __pyx_string_tab[32]
-#define __pyx_n_b_d __pyx_string_tab[33]
-#define __pyx_n_u_decode __pyx_string_tab[34]
-#define __pyx_n_u_decode_msg __pyx_string_tab[35]
-#define __pyx_kp_u_disable __pyx_string_tab[36]
-#define __pyx_n_b_e __pyx_string_tab[37]
-#define __pyx_kp_u_enable __pyx_string_tab[38]
-#define __pyx_n_u_error __pyx_string_tab[39]
-#define __pyx_n_b_f __pyx_string_tab[40]
-#define __pyx_n_u_fmt __pyx_string_tab[41]
-#define __pyx_n_u_fmt_str __pyx_string_tab[42]
-#define __pyx_n_u_func __pyx_string_tab[43]
-#define __pyx_kp_u_gc __pyx_string_tab[44]
-#define __pyx_n_u_genexpr __pyx_string_tab[45]
-#define __pyx_n_u_get __pyx_string_tab[46]
-#define __pyx_n_u_get_struct __pyx_string_tab[47]
-#define __pyx_n_u_get_struct_locals_genexpr __pyx_string_tab[48]
-#define __pyx_n_u_get_value_by_format __pyx_string_tab[49]
-#define __pyx_n_b_h __pyx_string_tab[50]
-#define __pyx_n_b_i __pyx_string_tab[51]
-#define __pyx_n_u_i __pyx_string_tab[52]
-#define __pyx_n_u_ignore __pyx_string_tab[53]
-#define __pyx_n_u_initializing __pyx_string_tab[54]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[55]
-#define __pyx_kp_u_isenabled __pyx_string_tab[56]
-#define __pyx_n_u_join __pyx_string_tab[57]
-#define __pyx_n_u_key __pyx_string_tab[58]
-#define __pyx_n_u_main __pyx_string_tab[59]
-#define __pyx_n_u_module __pyx_string_tab[60]
-#define __pyx_n_u_msg __pyx_string_tab[61]
-#define __pyx_n_b_n __pyx_string_tab[62]
-#define __pyx_n_u_name __pyx_string_tab[63]
-#define __pyx_n_u_next __pyx_string_tab[64]
-#define __pyx_n_u_partition __pyx_string_tab[65]
-#define __pyx_n_u_payload __pyx_string_tab[66]
-#define __pyx_n_u_pop __pyx_string_tab[67]
-#define __pyx_n_b_q __pyx_string_tab[68]
-#define __pyx_n_u_qualname __pyx_string_tab[69]
-#define __pyx_n_u_range __pyx_string_tab[70]
-#define __pyx_n_u_result __pyx_string_tab[71]
-#define __pyx_n_u_send __pyx_string_tab[72]
-#define __pyx_n_u_set_name __pyx_string_tab[73]
-#define __pyx_n_u_spec __pyx_string_tab[74]
-#define __pyx_n_u_st __pyx_string_tab[75]
-#define __pyx_n_u_struct __pyx_string_tab[76]
-#define __pyx_n_u_t __pyx_string_tab[77]
-#define __pyx_n_u_test __pyx_string_tab[78]
-#define __pyx_n_u_throw __pyx_string_tab[79]
-#define __pyx_n_u_type_msg __pyx_string_tab[80]
-#define __pyx_n_u_types __pyx_string_tab[81]
-#define __pyx_n_u_unpack_from __pyx_string_tab[82]
-#define __pyx_n_u_val __pyx_string_tab[83]
-#define __pyx_n_u_value __pyx_string_tab[84]
-#define __pyx_n_u_values __pyx_string_tab[85]
-#define __pyx_n_b_x __pyx_string_tab[86]
+#define __pyx_n_u_AX __pyx_string_tab[5]
+#define __pyx_n_u_AltE __pyx_string_tab[6]
+#define __pyx_n_b_B __pyx_string_tab[7]
+#define __pyx_n_b_C __pyx_string_tab[8]
+#define __pyx_n_u_C __pyx_string_tab[9]
+#define __pyx_n_u_DesPitch __pyx_string_tab[10]
+#define __pyx_n_u_DesRoll __pyx_string_tab[11]
+#define __pyx_n_b_E __pyx_string_tab[12]
+#define __pyx_n_u_E __pyx_string_tab[13]
+#define __pyx_n_u_ErrRP __pyx_string_tab[14]
+#define __pyx_n_u_GZ __pyx_string_tab[15]
+#define __pyx_n_b_H __pyx_string_tab[16]
+#define __pyx_n_u_HAGL __pyx_string_tab[17]
+#define __pyx_n_u_HAcc __pyx_string_tab[18]
+#define __pyx_n_u_HDop __pyx_string_tab[19]
+#define __pyx_n_b_I __pyx_string_tab[20]
+#define __pyx_n_u_IPD __pyx_string_tab[21]
+#define __pyx_n_u_IPE __pyx_string_tab[22]
+#define __pyx_n_u_IPN __pyx_string_tab[23]
+#define __pyx_n_u_IVT __pyx_string_tab[24]
+#define __pyx_n_u_IYAW __pyx_string_tab[25]
+#define __pyx_n_b_L __pyx_string_tab[26]
+#define __pyx_n_u_L __pyx_string_tab[27]
+#define __pyx_n_u_Lat __pyx_string_tab[28]
+#define __pyx_n_u_Lng __pyx_string_tab[29]
+#define __pyx_n_b_M __pyx_string_tab[30]
+#define __pyx_n_b_N __pyx_string_tab[31]
+#define __pyx_n_u_N __pyx_string_tab[32]
+#define __pyx_n_u_NavBrg __pyx_string_tab[33]
+#define __pyx_n_u_NavPitch __pyx_string_tab[34]
+#define __pyx_n_u_NavRoll __pyx_string_tab[35]
+#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[36]
+#define __pyx_n_u_Pitch __pyx_string_tab[37]
+#define __pyx_n_b_Q __pyx_string_tab[38]
+#define __pyx_n_u_ROUND_SET __pyx_string_tab[39]
+#define __pyx_n_u_Roll __pyx_string_tab[40]
+#define __pyx_n_u_SAcc __pyx_string_tab[41]
+#define __pyx_n_u_SH __pyx_string_tab[42]
+#define __pyx_n_u_SM __pyx_string_tab[43]
+#define __pyx_n_u_SP __pyx_string_tab[44]
+#define __pyx_n_u_SVT __pyx_string_tab[45]
+#define __pyx_n_u_Struct __pyx_string_tab[46]
+#define __pyx_n_u_TAT __pyx_string_tab[47]
+#define __pyx_n_u_TAW __pyx_string_tab[48]
+#define __pyx_n_u_TAsp __pyx_string_tab[49]
+#define __pyx_n_u_TBrg __pyx_string_tab[50]
+#define __pyx_n_u_TLat __pyx_string_tab[51]
+#define __pyx_n_u_TLng __pyx_string_tab[52]
+#define __pyx_n_u_Temp __pyx_string_tab[53]
+#define __pyx_n_u_VAcc __pyx_string_tab[54]
+#define __pyx_n_u_VDop __pyx_string_tab[55]
+#define __pyx_n_u_VWE __pyx_string_tab[56]
+#define __pyx_n_u_VWN __pyx_string_tab[57]
+#define __pyx_n_u_Yaw __pyx_string_tab[58]
+#define __pyx_n_b_Z __pyx_string_tab[59]
+#define __pyx_n_u_Z __pyx_string_tab[60]
+#define __pyx_kp_b__2 __pyx_string_tab[61]
+#define __pyx_kp_b__3 __pyx_string_tab[62]
+#define __pyx_kp_u__4 __pyx_string_tab[63]
+#define __pyx_kp_u__5 __pyx_string_tab[64]
+#define __pyx_n_b_a __pyx_string_tab[65]
+#define __pyx_kp_u_add_note __pyx_string_tab[66]
+#define __pyx_n_u_ascii __pyx_string_tab[67]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[68]
+#define __pyx_n_b_b __pyx_string_tab[69]
+#define __pyx_n_u_business_logic_coordinate_extrac __pyx_string_tab[70]
+#define __pyx_n_b_c __pyx_string_tab[71]
+#define __pyx_n_u_c __pyx_string_tab[72]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[73]
+#define __pyx_n_u_close __pyx_string_tab[74]
+#define __pyx_n_u_cols __pyx_string_tab[75]
+#define __pyx_n_u_cols_list __pyx_string_tab[76]
+#define __pyx_kp_u_coordinate_extractor_cy_pyx __pyx_string_tab[77]
+#define __pyx_n_b_d __pyx_string_tab[78]
+#define __pyx_n_u_decode __pyx_string_tab[79]
+#define __pyx_n_u_decode_msg __pyx_string_tab[80]
+#define __pyx_kp_u_disable __pyx_string_tab[81]
+#define __pyx_n_b_e __pyx_string_tab[82]
+#define __pyx_n_u_e __pyx_string_tab[83]
+#define __pyx_kp_u_enable __pyx_string_tab[84]
+#define __pyx_n_u_error __pyx_string_tab[85]
+#define __pyx_n_b_f __pyx_string_tab[86]
+#define __pyx_n_u_fmt __pyx_string_tab[87]
+#define __pyx_n_u_fmt_str __pyx_string_tab[88]
+#define __pyx_n_u_func __pyx_string_tab[89]
+#define __pyx_kp_u_gc __pyx_string_tab[90]
+#define __pyx_n_u_genexpr __pyx_string_tab[91]
+#define __pyx_n_u_get __pyx_string_tab[92]
+#define __pyx_n_u_get_struct __pyx_string_tab[93]
+#define __pyx_n_u_get_struct_locals_genexpr __pyx_string_tab[94]
+#define __pyx_n_u_get_value_by_format __pyx_string_tab[95]
+#define __pyx_n_b_h __pyx_string_tab[96]
+#define __pyx_n_b_i __pyx_string_tab[97]
+#define __pyx_n_u_i __pyx_string_tab[98]
+#define __pyx_n_u_ignore __pyx_string_tab[99]
+#define __pyx_n_u_initializing __pyx_string_tab[100]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[101]
+#define __pyx_kp_u_isenabled __pyx_string_tab[102]
+#define __pyx_n_u_join __pyx_string_tab[103]
+#define __pyx_n_u_key __pyx_string_tab[104]
+#define __pyx_n_u_main __pyx_string_tab[105]
+#define __pyx_n_u_module __pyx_string_tab[106]
+#define __pyx_n_u_msg __pyx_string_tab[107]
+#define __pyx_n_b_n __pyx_string_tab[108]
+#define __pyx_n_u_n __pyx_string_tab[109]
+#define __pyx_n_u_name __pyx_string_tab[110]
+#define __pyx_n_u_next __pyx_string_tab[111]
+#define __pyx_n_u_partition __pyx_string_tab[112]
+#define __pyx_n_u_payload __pyx_string_tab[113]
+#define __pyx_n_u_pop __pyx_string_tab[114]
+#define __pyx_n_b_q __pyx_string_tab[115]
+#define __pyx_n_u_qualname __pyx_string_tab[116]
+#define __pyx_n_u_range __pyx_string_tab[117]
+#define __pyx_n_u_result __pyx_string_tab[118]
+#define __pyx_n_u_round __pyx_string_tab[119]
+#define __pyx_n_u_send __pyx_string_tab[120]
+#define __pyx_n_u_set_name __pyx_string_tab[121]
+#define __pyx_n_u_spec __pyx_string_tab[122]
+#define __pyx_n_u_st __pyx_string_tab[123]
+#define __pyx_n_u_struct __pyx_string_tab[124]
+#define __pyx_n_u_t __pyx_string_tab[125]
+#define __pyx_n_u_test __pyx_string_tab[126]
+#define __pyx_n_u_throw __pyx_string_tab[127]
+#define __pyx_n_u_to_round __pyx_string_tab[128]
+#define __pyx_n_u_type_msg __pyx_string_tab[129]
+#define __pyx_n_u_types __pyx_string_tab[130]
+#define __pyx_n_u_unpack_from __pyx_string_tab[131]
+#define __pyx_n_u_val __pyx_string_tab[132]
+#define __pyx_n_u_value __pyx_string_tab[133]
+#define __pyx_n_u_values __pyx_string_tab[134]
+#define __pyx_n_b_x __pyx_string_tab[135]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -2763,14 +2865,16 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
-  for (int i=0; i<16; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
+  Py_CLEAR(clear_module_state->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
+  for (int i=0; i<17; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<4; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<87; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<136; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  Py_CLEAR(clear_module_state->__pyx_float_1eneg_7);
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_int_2);
   Py_CLEAR(clear_module_state->__pyx_int_4);
+  Py_CLEAR(clear_module_state->__pyx_int_7);
   Py_CLEAR(clear_module_state->__pyx_int_8);
   Py_CLEAR(clear_module_state->__pyx_int_16);
   Py_CLEAR(clear_module_state->__pyx_int_64);
@@ -2795,14 +2899,16 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_VISIT(traverse_module_state->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
-  for (int i=0; i<16; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
+  Py_VISIT(traverse_module_state->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr);
+  for (int i=0; i<17; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<4; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<87; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<136; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_1eneg_7);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_1);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_2);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_4);
+  __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_7);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_8);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_16);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_64);
@@ -2812,25 +2918,24 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
 #endif
 /* #### Code section: module_code ### */
 
-/* "coordinate_extractor_cy.pyx":41
+/* "business_logic/coordinate_extractor_cy.pyx":35
  * cdef dict STRUCT_CACHE = {}
  * 
  * def get_struct(int type_msg, str fmt_str):             # <<<<<<<<<<<<<<
- *     """
- *      struct.Struct object    .
+ *     key = (type_msg, fmt_str)
+ *     if key not in STRUCT_CACHE:
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_23coordinate_extractor_cy_1get_struct(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_14business_logic_23coordinate_extractor_cy_1get_struct(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_23coordinate_extractor_cy_get_struct, "\n    \327\236\327\227\327\226\327\231\327\250 struct.Struct object \327\236\327\224\327\236\327\230\327\236\327\225\327\237 \327\220\327\225 \327\231\327\225\327\246\327\250 \327\227\327\223\327\251.\n    ");
-static PyMethodDef __pyx_mdef_23coordinate_extractor_cy_1get_struct = {"get_struct", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_23coordinate_extractor_cy_1get_struct, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_23coordinate_extractor_cy_get_struct};
-static PyObject *__pyx_pw_23coordinate_extractor_cy_1get_struct(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_14business_logic_23coordinate_extractor_cy_1get_struct = {"get_struct", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14business_logic_23coordinate_extractor_cy_1get_struct, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14business_logic_23coordinate_extractor_cy_1get_struct(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2861,51 +2966,51 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_type_msg,&__pyx_mstate_global->__pyx_n_u_fmt_str,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 41, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 35, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 41, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 35, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 41, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 35, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_struct", 0) < (0)) __PYX_ERR(0, 41, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_struct", 0) < (0)) __PYX_ERR(0, 35, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_struct", 1, 2, 2, i); __PYX_ERR(0, 41, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_struct", 1, 2, 2, i); __PYX_ERR(0, 35, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 41, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 35, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 41, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 35, __pyx_L3_error)
     }
-    __pyx_v_type_msg = __Pyx_PyLong_As_int(values[0]); if (unlikely((__pyx_v_type_msg == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
+    __pyx_v_type_msg = __Pyx_PyLong_As_int(values[0]); if (unlikely((__pyx_v_type_msg == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L3_error)
     __pyx_v_fmt_str = ((PyObject*)values[1]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_struct", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 41, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_struct", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 35, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("coordinate_extractor_cy.get_struct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.get_struct", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fmt_str), (&PyUnicode_Type), 1, "fmt_str", 1))) __PYX_ERR(0, 41, __pyx_L1_error)
-  __pyx_r = __pyx_pf_23coordinate_extractor_cy_get_struct(__pyx_self, __pyx_v_type_msg, __pyx_v_fmt_str);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fmt_str), (&PyUnicode_Type), 1, "fmt_str", 1))) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_r = __pyx_pf_14business_logic_23coordinate_extractor_cy_get_struct(__pyx_self, __pyx_v_type_msg, __pyx_v_fmt_str);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2923,9 +3028,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_14business_logic_23coordinate_extractor_cy_10get_struct_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "coordinate_extractor_cy.pyx":47
+/* "business_logic/coordinate_extractor_cy.pyx":38
  *     key = (type_msg, fmt_str)
  *     if key not in STRUCT_CACHE:
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)             # <<<<<<<<<<<<<<
@@ -2933,19 +3038,19 @@ static PyObject *__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator(__py
  *     return STRUCT_CACHE[key]
 */
 
-static PyObject *__pyx_pf_23coordinate_extractor_cy_10get_struct_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_10get_struct_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)__pyx_tp_new_23coordinate_extractor_cy___pyx_scope_struct__genexpr(__pyx_mstate_global->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)__pyx_tp_new_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr(__pyx_mstate_global->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 47, __pyx_L1_error)
+    __PYX_ERR(0, 38, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -2953,7 +3058,7 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_10get_struct_genexpr(CYTHON_
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_23coordinate_extractor_cy_10get_struct_2generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_get_struct_locals_genexpr, __pyx_mstate_global->__pyx_n_u_coordinate_extractor_cy); if (unlikely(!gen)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14business_logic_23coordinate_extractor_cy_10get_struct_2generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_get_struct_locals_genexpr, __pyx_mstate_global->__pyx_n_u_business_logic_coordinate_extrac); if (unlikely(!gen)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -2961,7 +3066,7 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_10get_struct_genexpr(CYTHON_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("coordinate_extractor_cy.get_struct.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.get_struct.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -2969,9 +3074,9 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_10get_struct_genexpr(CYTHON_
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_14business_logic_23coordinate_extractor_cy_10get_struct_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *__pyx_cur_scope = ((struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *__pyx_cur_scope = ((struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -2997,32 +3102,32 @@ static PyObject *__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator(__py
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 47, __pyx_L1_error)
+    __PYX_ERR(0, 38, __pyx_L1_error)
   }
-  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 47, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_genexpr_arg_0)) { __Pyx_RaiseUnboundLocalError(".0"); __PYX_ERR(0, 38, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_genexpr_arg_0 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' is not iterable");
-    __PYX_ERR(0, 47, __pyx_L1_error)
+    __PYX_ERR(0, 38, __pyx_L1_error)
   }
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __pyx_t_1 = __pyx_cur_scope->__pyx_genexpr_arg_0;
-  __pyx_t_6 = __Pyx_init_unicode_iteration(__pyx_t_1, (&__pyx_t_3), (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_init_unicode_iteration(__pyx_t_1, (&__pyx_t_3), (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 38, __pyx_L1_error)
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_3; __pyx_t_7++) {
     __pyx_t_2 = __pyx_t_7;
     __pyx_cur_scope->__pyx_v_t = __Pyx_PyUnicode_READ(__pyx_t_5, __pyx_t_4, __pyx_t_2);
-    if (unlikely(__pyx_v_23coordinate_extractor_cy_TYPE_MAP == Py_None)) {
+    if (unlikely(__pyx_v_14business_logic_23coordinate_extractor_cy_TYPE_MAP == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "get");
-      __PYX_ERR(0, 47, __pyx_L1_error)
+      __PYX_ERR(0, 38, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_PyUnicode_FromOrdinal(__pyx_cur_scope->__pyx_v_t); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_FromOrdinal(__pyx_cur_scope->__pyx_v_t); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_8)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_9 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_8)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyDict_GetItemDefault(__pyx_v_23coordinate_extractor_cy_TYPE_MAP, __pyx_t_9, __pyx_mstate_global->__pyx_tuple[0]); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyDict_GetItemDefault(__pyx_v_14business_logic_23coordinate_extractor_cy_TYPE_MAP, __pyx_t_9, __pyx_mstate_global->__pyx_tuple[0]); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_r = __pyx_t_9;
@@ -3049,7 +3154,7 @@ static PyObject *__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator(__py
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_3;
     __pyx_t_5 = __pyx_cur_scope->__pyx_t_4;
     __pyx_t_7 = __pyx_cur_scope->__pyx_t_5;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 47, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 38, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
@@ -3076,18 +3181,18 @@ static PyObject *__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator(__py
   return __pyx_r;
 }
 
-/* "coordinate_extractor_cy.pyx":41
+/* "business_logic/coordinate_extractor_cy.pyx":35
  * cdef dict STRUCT_CACHE = {}
  * 
  * def get_struct(int type_msg, str fmt_str):             # <<<<<<<<<<<<<<
- *     """
- *      struct.Struct object    .
+ *     key = (type_msg, fmt_str)
+ *     if key not in STRUCT_CACHE:
 */
 
-static PyObject *__pyx_pf_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_type_msg, PyObject *__pyx_v_fmt_str) {
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_type_msg, PyObject *__pyx_v_fmt_str) {
   PyObject *__pyx_v_key = NULL;
   PyObject *__pyx_v_fmt = NULL;
-  PyObject *__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator = 0;
+  PyObject *__pyx_gb_14business_logic_23coordinate_extractor_cy_10get_struct_2generator = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3101,57 +3206,57 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_struct", 0);
 
-  /* "coordinate_extractor_cy.pyx":45
- *      struct.Struct object    .
- *     """
+  /* "business_logic/coordinate_extractor_cy.pyx":36
+ * 
+ * def get_struct(int type_msg, str fmt_str):
  *     key = (type_msg, fmt_str)             # <<<<<<<<<<<<<<
  *     if key not in STRUCT_CACHE:
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)
 */
-  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_type_msg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_type_msg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 45, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 36, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_fmt_str);
   __Pyx_GIVEREF(__pyx_v_fmt_str);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_fmt_str) != (0)) __PYX_ERR(0, 45, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_fmt_str) != (0)) __PYX_ERR(0, 36, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_v_key = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "coordinate_extractor_cy.pyx":46
- *     """
+  /* "business_logic/coordinate_extractor_cy.pyx":37
+ * def get_struct(int type_msg, str fmt_str):
  *     key = (type_msg, fmt_str)
  *     if key not in STRUCT_CACHE:             # <<<<<<<<<<<<<<
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)
  *         STRUCT_CACHE[key] = struct.Struct(b'<' + fmt)
 */
-  if (unlikely(__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE == Py_None)) {
+  if (unlikely(__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 46, __pyx_L1_error)
+    __PYX_ERR(0, 37, __pyx_L1_error)
   }
-  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_v_key, __pyx_v_23coordinate_extractor_cy_STRUCT_CACHE, Py_NE)); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_v_key, __pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE, Py_NE)); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 37, __pyx_L1_error)
   if (__pyx_t_3) {
 
-    /* "coordinate_extractor_cy.pyx":47
+    /* "business_logic/coordinate_extractor_cy.pyx":38
  *     key = (type_msg, fmt_str)
  *     if key not in STRUCT_CACHE:
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)             # <<<<<<<<<<<<<<
  *         STRUCT_CACHE[key] = struct.Struct(b'<' + fmt)
  *     return STRUCT_CACHE[key]
 */
-    __pyx_t_2 = __pyx_pf_23coordinate_extractor_cy_10get_struct_genexpr(NULL, __pyx_v_fmt_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_2 = __pyx_pf_14business_logic_23coordinate_extractor_cy_10get_struct_genexpr(NULL, __pyx_v_fmt_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyBytes_Join(__pyx_mstate_global->__pyx_kp_b_, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyBytes_Join(__pyx_mstate_global->__pyx_kp_b_, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_1))) __PYX_ERR(0, 47, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_1))) __PYX_ERR(0, 38, __pyx_L1_error)
     __pyx_v_fmt = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "coordinate_extractor_cy.pyx":48
+    /* "business_logic/coordinate_extractor_cy.pyx":39
  *     if key not in STRUCT_CACHE:
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)
  *         STRUCT_CACHE[key] = struct.Struct(b'<' + fmt)             # <<<<<<<<<<<<<<
@@ -3159,12 +3264,12 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyO
  * 
 */
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_struct); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_struct); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_Struct); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_Struct); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Add(__pyx_mstate_global->__pyx_kp_b__2, __pyx_v_fmt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Add(__pyx_mstate_global->__pyx_kp_b__2, __pyx_v_fmt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_6 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -3184,18 +3289,18 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyO
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (unlikely(__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE == Py_None)) {
+    if (unlikely(__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 48, __pyx_L1_error)
+      __PYX_ERR(0, 39, __pyx_L1_error)
     }
-    if (unlikely((PyDict_SetItem(__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE, __pyx_v_key, __pyx_t_1) < 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+    if (unlikely((PyDict_SetItem(__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE, __pyx_v_key, __pyx_t_1) < 0))) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "coordinate_extractor_cy.pyx":46
- *     """
+    /* "business_logic/coordinate_extractor_cy.pyx":37
+ * def get_struct(int type_msg, str fmt_str):
  *     key = (type_msg, fmt_str)
  *     if key not in STRUCT_CACHE:             # <<<<<<<<<<<<<<
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)
@@ -3203,30 +3308,30 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyO
 */
   }
 
-  /* "coordinate_extractor_cy.pyx":49
+  /* "business_logic/coordinate_extractor_cy.pyx":40
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)
  *         STRUCT_CACHE[key] = struct.Struct(b'<' + fmt)
  *     return STRUCT_CACHE[key]             # <<<<<<<<<<<<<<
  * 
- * # -------------------------------
+ * def decode_msg(bytes msg):
 */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE == Py_None)) {
+  if (unlikely(__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 49, __pyx_L1_error)
+    __PYX_ERR(0, 40, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE, __pyx_v_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE, __pyx_v_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "coordinate_extractor_cy.pyx":41
+  /* "business_logic/coordinate_extractor_cy.pyx":35
  * cdef dict STRUCT_CACHE = {}
  * 
  * def get_struct(int type_msg, str fmt_str):             # <<<<<<<<<<<<<<
- *     """
- *      struct.Struct object    .
+ *     key = (type_msg, fmt_str)
+ *     if key not in STRUCT_CACHE:
 */
 
   /* function exit code */
@@ -3235,36 +3340,35 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_get_struct(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("coordinate_extractor_cy.get_struct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.get_struct", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_key);
   __Pyx_XDECREF(__pyx_v_fmt);
-  __Pyx_XDECREF(__pyx_gb_23coordinate_extractor_cy_10get_struct_2generator);
+  __Pyx_XDECREF(__pyx_gb_14business_logic_23coordinate_extractor_cy_10get_struct_2generator);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "coordinate_extractor_cy.pyx":54
- * # decode_msg
- * # -------------------------------
+/* "business_logic/coordinate_extractor_cy.pyx":42
+ *     return STRUCT_CACHE[key]
+ * 
  * def decode_msg(bytes msg):             # <<<<<<<<<<<<<<
- *     """
- *     decode  NULL byte
+ *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')
+ * 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_23coordinate_extractor_cy_3decode_msg(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_14business_logic_23coordinate_extractor_cy_3decode_msg(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_23coordinate_extractor_cy_2decode_msg, "\n    decode \327\242\327\223 \327\224\326\276NULL byte\n    ");
-static PyMethodDef __pyx_mdef_23coordinate_extractor_cy_3decode_msg = {"decode_msg", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_23coordinate_extractor_cy_3decode_msg, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_23coordinate_extractor_cy_2decode_msg};
-static PyObject *__pyx_pw_23coordinate_extractor_cy_3decode_msg(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_14business_logic_23coordinate_extractor_cy_3decode_msg = {"decode_msg", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14business_logic_23coordinate_extractor_cy_3decode_msg, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14business_logic_23coordinate_extractor_cy_3decode_msg(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3294,44 +3398,44 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_msg,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 54, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 42, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 54, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 42, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "decode_msg", 0) < (0)) __PYX_ERR(0, 54, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "decode_msg", 0) < (0)) __PYX_ERR(0, 42, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("decode_msg", 1, 1, 1, i); __PYX_ERR(0, 54, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("decode_msg", 1, 1, 1, i); __PYX_ERR(0, 42, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 54, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 42, __pyx_L3_error)
     }
     __pyx_v_msg = ((PyObject*)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decode_msg", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 54, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decode_msg", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 42, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("coordinate_extractor_cy.decode_msg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.decode_msg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_msg), (&PyBytes_Type), 1, "msg", 1))) __PYX_ERR(0, 54, __pyx_L1_error)
-  __pyx_r = __pyx_pf_23coordinate_extractor_cy_2decode_msg(__pyx_self, __pyx_v_msg);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_msg), (&PyBytes_Type), 1, "msg", 1))) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_r = __pyx_pf_14business_logic_23coordinate_extractor_cy_2decode_msg(__pyx_self, __pyx_v_msg);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3350,7 +3454,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_23coordinate_extractor_cy_2decode_msg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_msg) {
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_2decode_msg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_msg) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3360,39 +3464,39 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_2decode_msg(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decode_msg", 0);
 
-  /* "coordinate_extractor_cy.pyx":58
- *     decode  NULL byte
- *     """
+  /* "business_logic/coordinate_extractor_cy.pyx":43
+ * 
+ * def decode_msg(bytes msg):
  *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')             # <<<<<<<<<<<<<<
  * 
- * # -------------------------------
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_mstate_global->__pyx_umethod_PyBytes_Type__partition, __pyx_v_msg, __pyx_mstate_global->__pyx_kp_b__3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_mstate_global->__pyx_umethod_PyBytes_Type__partition, __pyx_v_msg, __pyx_mstate_global->__pyx_kp_b__3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__Pyx_PyTuple_GET_ITEM(__pyx_t_1, 0), __pyx_mstate_global->__pyx_n_u_decode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__Pyx_PyTuple_GET_ITEM(__pyx_t_1, 0), __pyx_mstate_global->__pyx_n_u_decode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[1], NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[1], NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "coordinate_extractor_cy.pyx":54
- * # decode_msg
- * # -------------------------------
+  /* "business_logic/coordinate_extractor_cy.pyx":42
+ *     return STRUCT_CACHE[key]
+ * 
  * def decode_msg(bytes msg):             # <<<<<<<<<<<<<<
- *     """
- *     decode  NULL byte
+ *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')
+ * 
 */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("coordinate_extractor_cy.decode_msg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.decode_msg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3400,25 +3504,24 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_2decode_msg(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "coordinate_extractor_cy.pyx":63
- * # get_value_by_format
- * # -------------------------------
- * def get_value_by_format(bytes payload, str types, str cols, int type_msg):             # <<<<<<<<<<<<<<
- *     """
- *      payload  fmt   TYPE_MAP
+/* "business_logic/coordinate_extractor_cy.pyx":45
+ *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')
+ * 
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):             # <<<<<<<<<<<<<<
+ *     st = get_struct(type_msg, types)
+ *     try:
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_23coordinate_extractor_cy_5get_value_by_format(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_14business_logic_23coordinate_extractor_cy_5get_value_by_format(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_23coordinate_extractor_cy_4get_value_by_format, "\n    \327\244\327\242\327\240\327\225\327\227 payload \327\234\327\244\327\231 fmt \327\225\327\223\327\231\327\240\327\236\327\231\327\247\327\224 \327\251\327\234 TYPE_MAP\n    ");
-static PyMethodDef __pyx_mdef_23coordinate_extractor_cy_5get_value_by_format = {"get_value_by_format", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_23coordinate_extractor_cy_5get_value_by_format, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_23coordinate_extractor_cy_4get_value_by_format};
-static PyObject *__pyx_pw_23coordinate_extractor_cy_5get_value_by_format(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_14business_logic_23coordinate_extractor_cy_5get_value_by_format = {"get_value_by_format", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14business_logic_23coordinate_extractor_cy_5get_value_by_format, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14business_logic_23coordinate_extractor_cy_5get_value_by_format(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3429,11 +3532,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   PyObject *__pyx_v_types = 0;
   PyObject *__pyx_v_cols = 0;
   int __pyx_v_type_msg;
+  int __pyx_v_to_round;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[4] = {0,0,0,0};
+  PyObject* values[5] = {0,0,0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3449,69 +3553,85 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_payload,&__pyx_mstate_global->__pyx_n_u_types,&__pyx_mstate_global->__pyx_n_u_cols,&__pyx_mstate_global->__pyx_n_u_type_msg,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_payload,&__pyx_mstate_global->__pyx_n_u_types,&__pyx_mstate_global->__pyx_n_u_cols,&__pyx_mstate_global->__pyx_n_u_type_msg,&__pyx_mstate_global->__pyx_n_u_to_round,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 63, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 45, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
+        case  5:
+        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 45, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 63, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 63, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 63, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 63, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_value_by_format", 0) < (0)) __PYX_ERR(0, 63, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_value_by_format", 0) < (0)) __PYX_ERR(0, 45, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_value_by_format", 1, 4, 4, i); __PYX_ERR(0, 63, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_value_by_format", 0, 4, 5, i); __PYX_ERR(0, 45, __pyx_L3_error) }
       }
-    } else if (unlikely(__pyx_nargs != 4)) {
-      goto __pyx_L5_argtuple_error;
     } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 63, __pyx_L3_error)
-      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 63, __pyx_L3_error)
-      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 63, __pyx_L3_error)
-      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 63, __pyx_L3_error)
+      switch (__pyx_nargs) {
+        case  5:
+        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 45, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  4:
+        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 45, __pyx_L3_error)
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 45, __pyx_L3_error)
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 45, __pyx_L3_error)
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 45, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
     }
     __pyx_v_payload = ((PyObject*)values[0]);
     __pyx_v_types = ((PyObject*)values[1]);
     __pyx_v_cols = ((PyObject*)values[2]);
-    __pyx_v_type_msg = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_type_msg == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L3_error)
+    __pyx_v_type_msg = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_type_msg == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 45, __pyx_L3_error)
+    if (values[4]) {
+      __pyx_v_to_round = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_to_round == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 45, __pyx_L3_error)
+    } else {
+      __pyx_v_to_round = ((int)((int)0));
+    }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_value_by_format", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 63, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_value_by_format", 0, 4, 5, __pyx_nargs); __PYX_ERR(0, 45, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("coordinate_extractor_cy.get_value_by_format", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.get_value_by_format", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_payload), (&PyBytes_Type), 1, "payload", 1))) __PYX_ERR(0, 63, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_types), (&PyUnicode_Type), 1, "types", 1))) __PYX_ERR(0, 63, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_cols), (&PyUnicode_Type), 1, "cols", 1))) __PYX_ERR(0, 63, __pyx_L1_error)
-  __pyx_r = __pyx_pf_23coordinate_extractor_cy_4get_value_by_format(__pyx_self, __pyx_v_payload, __pyx_v_types, __pyx_v_cols, __pyx_v_type_msg);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_payload), (&PyBytes_Type), 1, "payload", 1))) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_types), (&PyUnicode_Type), 1, "types", 1))) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_cols), (&PyUnicode_Type), 1, "cols", 1))) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_r = __pyx_pf_14business_logic_23coordinate_extractor_cy_4get_value_by_format(__pyx_self, __pyx_v_payload, __pyx_v_types, __pyx_v_cols, __pyx_v_type_msg, __pyx_v_to_round);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3530,14 +3650,15 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_payload, PyObject *__pyx_v_types, PyObject *__pyx_v_cols, int __pyx_v_type_msg) {
+static PyObject *__pyx_pf_14business_logic_23coordinate_extractor_cy_4get_value_by_format(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_payload, PyObject *__pyx_v_types, PyObject *__pyx_v_cols, int __pyx_v_type_msg, int __pyx_v_to_round) {
   PyObject *__pyx_v_st = NULL;
   PyObject *__pyx_v_values = NULL;
   PyObject *__pyx_v_cols_list = NULL;
   PyObject *__pyx_v_result = NULL;
   int __pyx_v_i;
-  Py_UCS4 __pyx_v_t;
-  PyObject *__pyx_v_val = NULL;
+  PyObject *__pyx_v_val = 0;
+  PyObject *__pyx_v_t = 0;
+  PyObject *__pyx_v_ROUND_SET = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3553,25 +3674,26 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
   Py_ssize_t __pyx_t_11;
   Py_ssize_t __pyx_t_12;
   Py_UCS4 __pyx_t_13;
-  int __pyx_t_14;
+  PyObject *__pyx_t_14 = NULL;
   int __pyx_t_15;
   int __pyx_t_16;
+  int __pyx_t_17;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_value_by_format", 0);
 
-  /* "coordinate_extractor_cy.pyx":67
- *      payload  fmt   TYPE_MAP
- *     """
+  /* "business_logic/coordinate_extractor_cy.pyx":46
+ * 
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):
  *     st = get_struct(type_msg, types)             # <<<<<<<<<<<<<<
  *     try:
  *         values = st.unpack_from(payload)
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_get_struct); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_get_struct); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_type_msg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_type_msg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3591,14 +3713,14 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_st = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "coordinate_extractor_cy.pyx":68
- *     """
+  /* "business_logic/coordinate_extractor_cy.pyx":47
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):
  *     st = get_struct(type_msg, types)
  *     try:             # <<<<<<<<<<<<<<
  *         values = st.unpack_from(payload)
@@ -3613,7 +3735,7 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
     __Pyx_XGOTREF(__pyx_t_8);
     /*try:*/ {
 
-      /* "coordinate_extractor_cy.pyx":69
+      /* "business_logic/coordinate_extractor_cy.pyx":48
  *     st = get_struct(type_msg, types)
  *     try:
  *         values = st.unpack_from(payload)             # <<<<<<<<<<<<<<
@@ -3627,14 +3749,14 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
         PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_payload};
         __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_unpack_from, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L3_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_1);
       }
       __pyx_v_values = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "coordinate_extractor_cy.pyx":68
- *     """
+      /* "business_logic/coordinate_extractor_cy.pyx":47
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):
  *     st = get_struct(type_msg, types)
  *     try:             # <<<<<<<<<<<<<<
  *         values = st.unpack_from(payload)
@@ -3651,7 +3773,7 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "coordinate_extractor_cy.pyx":70
+    /* "business_logic/coordinate_extractor_cy.pyx":49
  *     try:
  *         values = st.unpack_from(payload)
  *     except struct.error:             # <<<<<<<<<<<<<<
@@ -3659,9 +3781,9 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
  * 
 */
     __Pyx_ErrFetch(&__pyx_t_1, &__pyx_t_3, &__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L5_except_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 70, __pyx_L5_except_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_error); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 49, __pyx_L5_except_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_10 = __Pyx_PyErr_GivenExceptionMatches(__pyx_t_1, __pyx_t_9);
@@ -3669,13 +3791,13 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
     __Pyx_ErrRestore(__pyx_t_1, __pyx_t_3, __pyx_t_4);
     __pyx_t_1 = 0; __pyx_t_3 = 0; __pyx_t_4 = 0;
     if (__pyx_t_10) {
-      __Pyx_AddTraceback("coordinate_extractor_cy.get_value_by_format", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_1) < 0) __PYX_ERR(0, 70, __pyx_L5_except_error)
+      __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.get_value_by_format", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_1) < 0) __PYX_ERR(0, 49, __pyx_L5_except_error)
       __Pyx_XGOTREF(__pyx_t_4);
       __Pyx_XGOTREF(__pyx_t_3);
       __Pyx_XGOTREF(__pyx_t_1);
 
-      /* "coordinate_extractor_cy.pyx":71
+      /* "business_logic/coordinate_extractor_cy.pyx":50
  *         values = st.unpack_from(payload)
  *     except struct.error:
  *         return {}             # <<<<<<<<<<<<<<
@@ -3683,7 +3805,7 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
  *     cols_list = cols.split(",")
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_9 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 71, __pyx_L5_except_error)
+      __pyx_t_9 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 50, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_r = __pyx_t_9;
       __pyx_t_9 = 0;
@@ -3694,8 +3816,8 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
     }
     goto __pyx_L5_except_error;
 
-    /* "coordinate_extractor_cy.pyx":68
- *     """
+    /* "business_logic/coordinate_extractor_cy.pyx":47
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):
  *     st = get_struct(type_msg, types)
  *     try:             # <<<<<<<<<<<<<<
  *         values = st.unpack_from(payload)
@@ -3716,7 +3838,7 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
     __pyx_L8_try_end:;
   }
 
-  /* "coordinate_extractor_cy.pyx":73
+  /* "business_logic/coordinate_extractor_cy.pyx":52
  *         return {}
  * 
  *     cols_list = cols.split(",")             # <<<<<<<<<<<<<<
@@ -3725,132 +3847,297 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
 */
   if (unlikely(__pyx_v_cols == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "split");
-    __PYX_ERR(0, 73, __pyx_L1_error)
+    __PYX_ERR(0, 52, __pyx_L1_error)
   }
-  __pyx_t_1 = PyUnicode_Split(__pyx_v_cols, __Pyx_NoneAsNull(__pyx_mstate_global->__pyx_kp_u__4), -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_Split(__pyx_v_cols, __Pyx_NoneAsNull(__pyx_mstate_global->__pyx_kp_u__4), -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_cols_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "coordinate_extractor_cy.pyx":74
+  /* "business_logic/coordinate_extractor_cy.pyx":53
  * 
  *     cols_list = cols.split(",")
  *     result = {}             # <<<<<<<<<<<<<<
  *     cdef int i
- *     for i in range(len(cols_list)):
+ *     cdef object val
 */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "coordinate_extractor_cy.pyx":76
- *     result = {}
- *     cdef int i
+  /* "business_logic/coordinate_extractor_cy.pyx":58
+ *     cdef str t
+ * 
+ *     ROUND_SET = frozenset([             # <<<<<<<<<<<<<<
+ *         "Lat", "Lng", "TLat", "TLng", "Pitch", "IPE", "Yaw", "IPN", "IYAW",
+ *         "DesPitch", "NavPitch", "Temp", "AltE", "VDop", "VAcc", "Roll",
+*/
+  __pyx_t_1 = __Pyx_PyFrozenSet_New(__pyx_mstate_global->__pyx_tuple[2]); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_ROUND_SET = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "business_logic/coordinate_extractor_cy.pyx":66
+ *     ])
+ * 
  *     for i in range(len(cols_list)):             # <<<<<<<<<<<<<<
  *         t = types[i]
  *         val = values[i]
 */
-  __pyx_t_11 = __Pyx_PyList_GET_SIZE(__pyx_v_cols_list); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyList_GET_SIZE(__pyx_v_cols_list); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 66, __pyx_L1_error)
   __pyx_t_12 = __pyx_t_11;
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_12; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "coordinate_extractor_cy.pyx":77
- *     cdef int i
+    /* "business_logic/coordinate_extractor_cy.pyx":67
+ * 
  *     for i in range(len(cols_list)):
  *         t = types[i]             # <<<<<<<<<<<<<<
  *         val = values[i]
  * 
 */
-    __pyx_t_13 = __Pyx_GetItemInt_Unicode(__pyx_v_types, __pyx_v_i, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1); if (unlikely(__pyx_t_13 == (Py_UCS4)-1)) __PYX_ERR(0, 77, __pyx_L1_error)
-    __pyx_v_t = __pyx_t_13;
+    __pyx_t_13 = __Pyx_GetItemInt_Unicode(__pyx_v_types, __pyx_v_i, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1); if (unlikely(__pyx_t_13 == (Py_UCS4)-1)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_FromOrdinal(__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_1)) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_t, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
 
-    /* "coordinate_extractor_cy.pyx":78
+    /* "business_logic/coordinate_extractor_cy.pyx":68
  *     for i in range(len(cols_list)):
  *         t = types[i]
  *         val = values[i]             # <<<<<<<<<<<<<<
  * 
  *         if t in ("c","C","e","E"):
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_values, __pyx_v_i, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_values, __pyx_v_i, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_val, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "coordinate_extractor_cy.pyx":80
+    /* "business_logic/coordinate_extractor_cy.pyx":70
  *         val = values[i]
  * 
  *         if t in ("c","C","e","E"):             # <<<<<<<<<<<<<<
- *             val *= 100
- *         elif t in ("n","N","Z") and isinstance(val, bytes):
+ *             val /= 100
+ *             if to_round and cols_list[i] in ROUND_SET:
 */
-    switch (__pyx_v_t) {
-      case 99:
-      case 67:
-      case 0x65:
-      case 69:
-      __pyx_t_14 = 1;
-      break;
-      default:
-      __pyx_t_14 = 0;
-      break;
-    }
-    __pyx_t_15 = __pyx_t_14;
-    if (__pyx_t_15) {
-
-      /* "coordinate_extractor_cy.pyx":81
- * 
- *         if t in ("c","C","e","E"):
- *             val *= 100             # <<<<<<<<<<<<<<
- *         elif t in ("n","N","Z") and isinstance(val, bytes):
- *             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')
-*/
-      __pyx_t_1 = __Pyx_PyLong_MultiplyObjC(__pyx_v_val, __pyx_mstate_global->__pyx_int_100, 0x64, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_1);
-      __pyx_t_1 = 0;
-
-      /* "coordinate_extractor_cy.pyx":80
- *         val = values[i]
- * 
- *         if t in ("c","C","e","E"):             # <<<<<<<<<<<<<<
- *             val *= 100
- *         elif t in ("n","N","Z") and isinstance(val, bytes):
-*/
-      goto __pyx_L13;
-    }
-
-    /* "coordinate_extractor_cy.pyx":82
- *         if t in ("c","C","e","E"):
- *             val *= 100
- *         elif t in ("n","N","Z") and isinstance(val, bytes):             # <<<<<<<<<<<<<<
- *             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')
- * 
-*/
-    switch (__pyx_v_t) {
-      case 0x6E:
-      case 78:
-      case 90:
-      __pyx_t_14 = 1;
-      break;
-      default:
-      __pyx_t_14 = 0;
-      break;
-    }
-    __pyx_t_16 = __pyx_t_14;
-    if (__pyx_t_16) {
+    __Pyx_INCREF(__pyx_v_t);
+    __pyx_t_14 = __pyx_v_t;
+    __pyx_t_16 = (__Pyx_PyUnicode_Equals(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_c, Py_EQ)); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 70, __pyx_L1_error)
+    if (!__pyx_t_16) {
     } else {
       __pyx_t_15 = __pyx_t_16;
       goto __pyx_L14_bool_binop_done;
     }
-    __pyx_t_16 = PyBytes_Check(__pyx_v_val); 
+    __pyx_t_16 = (__Pyx_PyUnicode_Equals(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_C, Py_EQ)); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 70, __pyx_L1_error)
+    if (!__pyx_t_16) {
+    } else {
+      __pyx_t_15 = __pyx_t_16;
+      goto __pyx_L14_bool_binop_done;
+    }
+    __pyx_t_16 = (__Pyx_PyUnicode_Equals(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_e, Py_EQ)); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 70, __pyx_L1_error)
+    if (!__pyx_t_16) {
+    } else {
+      __pyx_t_15 = __pyx_t_16;
+      goto __pyx_L14_bool_binop_done;
+    }
+    __pyx_t_16 = (__Pyx_PyUnicode_Equals(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_E, Py_EQ)); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 70, __pyx_L1_error)
     __pyx_t_15 = __pyx_t_16;
     __pyx_L14_bool_binop_done:;
-    if (__pyx_t_15) {
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __pyx_t_16 = __pyx_t_15;
+    if (__pyx_t_16) {
 
-      /* "coordinate_extractor_cy.pyx":83
- *             val *= 100
+      /* "business_logic/coordinate_extractor_cy.pyx":71
+ * 
+ *         if t in ("c","C","e","E"):
+ *             val /= 100             # <<<<<<<<<<<<<<
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)
+*/
+      __pyx_t_1 = __Pyx_PyLong_TrueDivideObjC(__pyx_v_val, __pyx_mstate_global->__pyx_int_100, 0x64, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "business_logic/coordinate_extractor_cy.pyx":72
+ *         if t in ("c","C","e","E"):
+ *             val /= 100
+ *             if to_round and cols_list[i] in ROUND_SET:             # <<<<<<<<<<<<<<
+ *                 val = round(val, 7)
+ *         elif t == "L":
+*/
+      if (__pyx_v_to_round) {
+      } else {
+        __pyx_t_16 = __pyx_v_to_round;
+        goto __pyx_L19_bool_binop_done;
+      }
+      __pyx_t_15 = (__Pyx_PySequence_ContainsTF(__Pyx_PyList_GET_ITEM(__pyx_v_cols_list, __pyx_v_i), __pyx_v_ROUND_SET, Py_EQ)); if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_16 = __pyx_t_15;
+      __pyx_L19_bool_binop_done:;
+      if (__pyx_t_16) {
+
+        /* "business_logic/coordinate_extractor_cy.pyx":73
+ *             val /= 100
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)             # <<<<<<<<<<<<<<
+ *         elif t == "L":
+ *             val *= 1e-7
+*/
+        __pyx_t_3 = NULL;
+        __Pyx_INCREF(__pyx_builtin_round);
+        __pyx_t_4 = __pyx_builtin_round; 
+        __pyx_t_5 = 1;
+        {
+          PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_v_val, __pyx_mstate_global->__pyx_int_7};
+          __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+        }
+        __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_1);
+        __pyx_t_1 = 0;
+
+        /* "business_logic/coordinate_extractor_cy.pyx":72
+ *         if t in ("c","C","e","E"):
+ *             val /= 100
+ *             if to_round and cols_list[i] in ROUND_SET:             # <<<<<<<<<<<<<<
+ *                 val = round(val, 7)
+ *         elif t == "L":
+*/
+      }
+
+      /* "business_logic/coordinate_extractor_cy.pyx":70
+ *         val = values[i]
+ * 
+ *         if t in ("c","C","e","E"):             # <<<<<<<<<<<<<<
+ *             val /= 100
+ *             if to_round and cols_list[i] in ROUND_SET:
+*/
+      goto __pyx_L13;
+    }
+
+    /* "business_logic/coordinate_extractor_cy.pyx":74
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)
+ *         elif t == "L":             # <<<<<<<<<<<<<<
+ *             val *= 1e-7
+ *             if to_round and cols_list[i] in ROUND_SET:
+*/
+    __pyx_t_16 = (__Pyx_PyUnicode_Equals(__pyx_v_t, __pyx_mstate_global->__pyx_n_u_L, Py_EQ)); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 74, __pyx_L1_error)
+    if (__pyx_t_16) {
+
+      /* "business_logic/coordinate_extractor_cy.pyx":75
+ *                 val = round(val, 7)
+ *         elif t == "L":
+ *             val *= 1e-7             # <<<<<<<<<<<<<<
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)
+*/
+      __pyx_t_1 = PyNumber_InPlaceMultiply(__pyx_v_val, __pyx_mstate_global->__pyx_float_1eneg_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "business_logic/coordinate_extractor_cy.pyx":76
+ *         elif t == "L":
+ *             val *= 1e-7
+ *             if to_round and cols_list[i] in ROUND_SET:             # <<<<<<<<<<<<<<
+ *                 val = round(val, 7)
+ *         elif t in ("n","N","Z") and isinstance(val, bytes):
+*/
+      if (__pyx_v_to_round) {
+      } else {
+        __pyx_t_16 = __pyx_v_to_round;
+        goto __pyx_L22_bool_binop_done;
+      }
+      __pyx_t_15 = (__Pyx_PySequence_ContainsTF(__Pyx_PyList_GET_ITEM(__pyx_v_cols_list, __pyx_v_i), __pyx_v_ROUND_SET, Py_EQ)); if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_16 = __pyx_t_15;
+      __pyx_L22_bool_binop_done:;
+      if (__pyx_t_16) {
+
+        /* "business_logic/coordinate_extractor_cy.pyx":77
+ *             val *= 1e-7
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)             # <<<<<<<<<<<<<<
+ *         elif t in ("n","N","Z") and isinstance(val, bytes):
+ *             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')
+*/
+        __pyx_t_4 = NULL;
+        __Pyx_INCREF(__pyx_builtin_round);
+        __pyx_t_3 = __pyx_builtin_round; 
+        __pyx_t_5 = 1;
+        {
+          PyObject *__pyx_callargs[3] = {__pyx_t_4, __pyx_v_val, __pyx_mstate_global->__pyx_int_7};
+          __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+        }
+        __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_1);
+        __pyx_t_1 = 0;
+
+        /* "business_logic/coordinate_extractor_cy.pyx":76
+ *         elif t == "L":
+ *             val *= 1e-7
+ *             if to_round and cols_list[i] in ROUND_SET:             # <<<<<<<<<<<<<<
+ *                 val = round(val, 7)
+ *         elif t in ("n","N","Z") and isinstance(val, bytes):
+*/
+      }
+
+      /* "business_logic/coordinate_extractor_cy.pyx":74
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)
+ *         elif t == "L":             # <<<<<<<<<<<<<<
+ *             val *= 1e-7
+ *             if to_round and cols_list[i] in ROUND_SET:
+*/
+      goto __pyx_L13;
+    }
+
+    /* "business_logic/coordinate_extractor_cy.pyx":78
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)
+ *         elif t in ("n","N","Z") and isinstance(val, bytes):             # <<<<<<<<<<<<<<
+ *             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')
+ * 
+*/
+    __Pyx_INCREF(__pyx_v_t);
+    __pyx_t_14 = __pyx_v_t;
+    __pyx_t_17 = (__Pyx_PyUnicode_Equals(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_n, Py_EQ)); if (unlikely((__pyx_t_17 < 0))) __PYX_ERR(0, 78, __pyx_L1_error)
+    if (!__pyx_t_17) {
+    } else {
+      __pyx_t_15 = __pyx_t_17;
+      goto __pyx_L26_bool_binop_done;
+    }
+    __pyx_t_17 = (__Pyx_PyUnicode_Equals(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_N, Py_EQ)); if (unlikely((__pyx_t_17 < 0))) __PYX_ERR(0, 78, __pyx_L1_error)
+    if (!__pyx_t_17) {
+    } else {
+      __pyx_t_15 = __pyx_t_17;
+      goto __pyx_L26_bool_binop_done;
+    }
+    __pyx_t_17 = (__Pyx_PyUnicode_Equals(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_Z, Py_EQ)); if (unlikely((__pyx_t_17 < 0))) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_15 = __pyx_t_17;
+    __pyx_L26_bool_binop_done:;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __pyx_t_17 = __pyx_t_15;
+    if (__pyx_t_17) {
+    } else {
+      __pyx_t_16 = __pyx_t_17;
+      goto __pyx_L24_bool_binop_done;
+    }
+    __pyx_t_17 = PyBytes_Check(__pyx_v_val); 
+    __pyx_t_16 = __pyx_t_17;
+    __pyx_L24_bool_binop_done:;
+    if (__pyx_t_16) {
+
+      /* "business_logic/coordinate_extractor_cy.pyx":79
+ *                 val = round(val, 7)
  *         elif t in ("n","N","Z") and isinstance(val, bytes):
  *             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')             # <<<<<<<<<<<<<<
  * 
@@ -3863,24 +4150,24 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
         PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_b__3};
         __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_partition, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
       }
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_decode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_decode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[1], NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[1], NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_val, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "coordinate_extractor_cy.pyx":82
- *         if t in ("c","C","e","E"):
- *             val *= 100
+      /* "business_logic/coordinate_extractor_cy.pyx":78
+ *             if to_round and cols_list[i] in ROUND_SET:
+ *                 val = round(val, 7)
  *         elif t in ("n","N","Z") and isinstance(val, bytes):             # <<<<<<<<<<<<<<
  *             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')
  * 
@@ -3888,17 +4175,17 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
     }
     __pyx_L13:;
 
-    /* "coordinate_extractor_cy.pyx":85
+    /* "business_logic/coordinate_extractor_cy.pyx":81
  *             val = val.partition(b'\x00')[0].decode('ascii', 'ignore')
  * 
  *         result[cols_list[i]] = val             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    if (unlikely((PyDict_SetItem(__pyx_v_result, __Pyx_PyList_GET_ITEM(__pyx_v_cols_list, __pyx_v_i), __pyx_v_val) < 0))) __PYX_ERR(0, 85, __pyx_L1_error)
+    if (unlikely((PyDict_SetItem(__pyx_v_result, __Pyx_PyList_GET_ITEM(__pyx_v_cols_list, __pyx_v_i), __pyx_v_val) < 0))) __PYX_ERR(0, 81, __pyx_L1_error)
   }
 
-  /* "coordinate_extractor_cy.pyx":87
+  /* "business_logic/coordinate_extractor_cy.pyx":83
  *         result[cols_list[i]] = val
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -3908,12 +4195,12 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "coordinate_extractor_cy.pyx":63
- * # get_value_by_format
- * # -------------------------------
- * def get_value_by_format(bytes payload, str types, str cols, int type_msg):             # <<<<<<<<<<<<<<
- *     """
- *      payload  fmt   TYPE_MAP
+  /* "business_logic/coordinate_extractor_cy.pyx":45
+ *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')
+ * 
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):             # <<<<<<<<<<<<<<
+ *     st = get_struct(type_msg, types)
+ *     try:
 */
 
   /* function exit code */
@@ -3923,7 +4210,8 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("coordinate_extractor_cy.get_value_by_format", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_AddTraceback("business_logic.coordinate_extractor_cy.get_value_by_format", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_st);
@@ -3931,22 +4219,24 @@ static PyObject *__pyx_pf_23coordinate_extractor_cy_4get_value_by_format(CYTHON_
   __Pyx_XDECREF(__pyx_v_cols_list);
   __Pyx_XDECREF(__pyx_v_result);
   __Pyx_XDECREF(__pyx_v_val);
+  __Pyx_XDECREF(__pyx_v_t);
+  __Pyx_XDECREF(__pyx_v_ROUND_SET);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 /* #### Code section: module_exttypes ### */
 
-static PyObject *__pyx_tp_new_23coordinate_extractor_cy___pyx_scope_struct__genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_23coordinate_extractor_cy___pyx_scope_struct__genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_23coordinate_extractor_cy___pyx_scope_struct__genexpr[--__pyx_mstate_global->__pyx_freecount_23coordinate_extractor_cy___pyx_scope_struct__genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr[--__pyx_mstate_global->__pyx_freecount_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr));
     (void) PyObject_INIT(o, t);
   } else
   #endif
@@ -3958,11 +4248,11 @@ static PyObject *__pyx_tp_new_23coordinate_extractor_cy___pyx_scope_struct__gene
   return o;
 }
 
-static void __pyx_tp_dealloc_23coordinate_extractor_cy___pyx_scope_struct__genexpr(PyObject *o) {
-  struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *p = (struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)o;
+static void __pyx_tp_dealloc_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr(PyObject *o) {
+  struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *p = (struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_23coordinate_extractor_cy___pyx_scope_struct__genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -3970,8 +4260,8 @@ static void __pyx_tp_dealloc_23coordinate_extractor_cy___pyx_scope_struct__genex
   Py_CLEAR(p->__pyx_genexpr_arg_0);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_23coordinate_extractor_cy___pyx_scope_struct__genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr)))) {
-    __pyx_mstate_global->__pyx_freelist_23coordinate_extractor_cy___pyx_scope_struct__genexpr[__pyx_mstate_global->__pyx_freecount_23coordinate_extractor_cy___pyx_scope_struct__genexpr++] = ((struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr)))) {
+    __pyx_mstate_global->__pyx_freelist_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr[__pyx_mstate_global->__pyx_freecount_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr++] = ((struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr *)o);
   } else
   #endif
   {
@@ -3986,26 +4276,26 @@ static void __pyx_tp_dealloc_23coordinate_extractor_cy___pyx_scope_struct__genex
   }
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_23coordinate_extractor_cy___pyx_scope_struct__genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_23coordinate_extractor_cy___pyx_scope_struct__genexpr},
+static PyType_Slot __pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr_spec = {
-  "coordinate_extractor_cy.__pyx_scope_struct__genexpr",
-  sizeof(struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr),
+static PyType_Spec __pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr_spec = {
+  "business_logic.coordinate_extractor_cy.__pyx_scope_struct__genexpr",
+  sizeof(struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr_slots,
+  __pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr = {
+static PyTypeObject __pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "coordinate_extractor_cy.""__pyx_scope_struct__genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_23coordinate_extractor_cy___pyx_scope_struct__genexpr), /*tp_basicsize*/
+  "business_logic.coordinate_extractor_cy.""__pyx_scope_struct__genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_23coordinate_extractor_cy___pyx_scope_struct__genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -4045,7 +4335,7 @@ static PyTypeObject __pyx_type_23coordinate_extractor_cy___pyx_scope_struct__gen
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_23coordinate_extractor_cy___pyx_scope_struct__genexpr, /*tp_new*/
+  __pyx_tp_new_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -4101,8 +4391,8 @@ static int __Pyx_modinit_global_init_code(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_modinit_global_init_code", 0);
   /*--- Global init code ---*/
-  __pyx_v_23coordinate_extractor_cy_TYPE_MAP = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  __pyx_v_23coordinate_extractor_cy_STRUCT_CACHE = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  __pyx_v_14business_logic_23coordinate_extractor_cy_TYPE_MAP = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  __pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE = ((PyObject*)Py_None); Py_INCREF(Py_None);
   __Pyx_RefNannyFinishContext();
   return 0;
 }
@@ -4134,19 +4424,19 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr)) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr_spec, __pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr)) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr_spec, __pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 38, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr = &__pyx_type_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
+  __pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr = &__pyx_type_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 38, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_23coordinate_extractor_cy___pyx_scope_struct__genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_14business_logic_23coordinate_extractor_cy___pyx_scope_struct__genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   __Pyx_RefNannyFinishContext();
@@ -4359,6 +4649,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_coordinate_extractor_cy(PyObject *
   __pyx_mstatetype *__pyx_mstate = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4441,13 +4732,13 @@ __Pyx_RefNannySetupContext("PyInit_coordinate_extractor_cy", 0);
   if (__pyx_AsyncGen_init(__pyx_m) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
   /*--- Library function declarations ---*/
-  if (__pyx_module_is_main_coordinate_extractor_cy) {
+  if (__pyx_module_is_main_business_logic__coordinate_extractor_cy) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "coordinate_extractor_cy")) {
-      if (unlikely((PyDict_SetItemString(modules, "coordinate_extractor_cy", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "business_logic.coordinate_extractor_cy")) {
+      if (unlikely((PyDict_SetItemString(modules, "business_logic.coordinate_extractor_cy", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -4465,255 +4756,262 @@ __Pyx_RefNannySetupContext("PyInit_coordinate_extractor_cy", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "coordinate_extractor_cy.pyx":8
+  /* "business_logic/coordinate_extractor_cy.pyx":8
  * # cython: cdivision=True
  * 
  * import struct             # <<<<<<<<<<<<<<
  * 
- * # -------------------------------
+ * cdef dict TYPE_MAP = {
 */
   __pyx_t_2 = __Pyx_ImportDottedModule(__pyx_mstate_global->__pyx_n_u_struct, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_struct, __pyx_t_2) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "coordinate_extractor_cy.pyx":14
- * # -------------------------------
+  /* "business_logic/coordinate_extractor_cy.pyx":11
+ * 
  * cdef dict TYPE_MAP = {
  *     b'a': (b'32h', 64),             # <<<<<<<<<<<<<<
  *     b'b': (b'b', 1),
  *     b'B': (b'B', 1),
 */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_a, __pyx_mstate_global->__pyx_tuple[2]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_a, __pyx_mstate_global->__pyx_tuple[3]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":15
+  /* "business_logic/coordinate_extractor_cy.pyx":12
  * cdef dict TYPE_MAP = {
  *     b'a': (b'32h', 64),
  *     b'b': (b'b', 1),             # <<<<<<<<<<<<<<
  *     b'B': (b'B', 1),
  *     b'h': (b'h', 2),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_b, __pyx_mstate_global->__pyx_tuple[3]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_b, __pyx_mstate_global->__pyx_tuple[4]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":16
+  /* "business_logic/coordinate_extractor_cy.pyx":13
  *     b'a': (b'32h', 64),
  *     b'b': (b'b', 1),
  *     b'B': (b'B', 1),             # <<<<<<<<<<<<<<
  *     b'h': (b'h', 2),
  *     b'H': (b'H', 2),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_B, __pyx_mstate_global->__pyx_tuple[4]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_B, __pyx_mstate_global->__pyx_tuple[5]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":17
+  /* "business_logic/coordinate_extractor_cy.pyx":14
  *     b'b': (b'b', 1),
  *     b'B': (b'B', 1),
  *     b'h': (b'h', 2),             # <<<<<<<<<<<<<<
  *     b'H': (b'H', 2),
  *     b'i': (b'i', 4),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_h, __pyx_mstate_global->__pyx_tuple[5]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_h, __pyx_mstate_global->__pyx_tuple[6]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":18
+  /* "business_logic/coordinate_extractor_cy.pyx":15
  *     b'B': (b'B', 1),
  *     b'h': (b'h', 2),
  *     b'H': (b'H', 2),             # <<<<<<<<<<<<<<
  *     b'i': (b'i', 4),
  *     b'I': (b'I', 4),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_H, __pyx_mstate_global->__pyx_tuple[6]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_H, __pyx_mstate_global->__pyx_tuple[7]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":19
+  /* "business_logic/coordinate_extractor_cy.pyx":16
  *     b'h': (b'h', 2),
  *     b'H': (b'H', 2),
  *     b'i': (b'i', 4),             # <<<<<<<<<<<<<<
  *     b'I': (b'I', 4),
  *     b'f': (b'f', 4),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_i, __pyx_mstate_global->__pyx_tuple[7]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_i, __pyx_mstate_global->__pyx_tuple[8]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":20
+  /* "business_logic/coordinate_extractor_cy.pyx":17
  *     b'H': (b'H', 2),
  *     b'i': (b'i', 4),
  *     b'I': (b'I', 4),             # <<<<<<<<<<<<<<
  *     b'f': (b'f', 4),
  *     b'd': (b'd', 8),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_I, __pyx_mstate_global->__pyx_tuple[8]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_I, __pyx_mstate_global->__pyx_tuple[9]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":21
+  /* "business_logic/coordinate_extractor_cy.pyx":18
  *     b'i': (b'i', 4),
  *     b'I': (b'I', 4),
  *     b'f': (b'f', 4),             # <<<<<<<<<<<<<<
  *     b'd': (b'd', 8),
  *     b'n': (b'4s', 4),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_f, __pyx_mstate_global->__pyx_tuple[9]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_f, __pyx_mstate_global->__pyx_tuple[10]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":22
+  /* "business_logic/coordinate_extractor_cy.pyx":19
  *     b'I': (b'I', 4),
  *     b'f': (b'f', 4),
  *     b'd': (b'd', 8),             # <<<<<<<<<<<<<<
  *     b'n': (b'4s', 4),
  *     b'N': (b'16s', 16),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_d, __pyx_mstate_global->__pyx_tuple[10]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_d, __pyx_mstate_global->__pyx_tuple[11]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":23
+  /* "business_logic/coordinate_extractor_cy.pyx":20
  *     b'f': (b'f', 4),
  *     b'd': (b'd', 8),
  *     b'n': (b'4s', 4),             # <<<<<<<<<<<<<<
  *     b'N': (b'16s', 16),
  *     b'Z': (b'64s', 64),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_n, __pyx_mstate_global->__pyx_tuple[11]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_n, __pyx_mstate_global->__pyx_tuple[12]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":24
+  /* "business_logic/coordinate_extractor_cy.pyx":21
  *     b'd': (b'd', 8),
  *     b'n': (b'4s', 4),
  *     b'N': (b'16s', 16),             # <<<<<<<<<<<<<<
  *     b'Z': (b'64s', 64),
  *     b'c': (b'h', 2),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_N, __pyx_mstate_global->__pyx_tuple[12]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_N, __pyx_mstate_global->__pyx_tuple[13]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":25
+  /* "business_logic/coordinate_extractor_cy.pyx":22
  *     b'n': (b'4s', 4),
  *     b'N': (b'16s', 16),
  *     b'Z': (b'64s', 64),             # <<<<<<<<<<<<<<
  *     b'c': (b'h', 2),
  *     b'C': (b'H', 2),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_Z, __pyx_mstate_global->__pyx_tuple[13]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_Z, __pyx_mstate_global->__pyx_tuple[14]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":26
+  /* "business_logic/coordinate_extractor_cy.pyx":23
  *     b'N': (b'16s', 16),
  *     b'Z': (b'64s', 64),
  *     b'c': (b'h', 2),             # <<<<<<<<<<<<<<
  *     b'C': (b'H', 2),
  *     b'e': (b'i', 4),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_c, __pyx_mstate_global->__pyx_tuple[5]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_c, __pyx_mstate_global->__pyx_tuple[6]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":27
+  /* "business_logic/coordinate_extractor_cy.pyx":24
  *     b'Z': (b'64s', 64),
  *     b'c': (b'h', 2),
  *     b'C': (b'H', 2),             # <<<<<<<<<<<<<<
  *     b'e': (b'i', 4),
  *     b'E': (b'I', 4),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_C, __pyx_mstate_global->__pyx_tuple[6]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_C, __pyx_mstate_global->__pyx_tuple[7]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":28
+  /* "business_logic/coordinate_extractor_cy.pyx":25
  *     b'c': (b'h', 2),
  *     b'C': (b'H', 2),
  *     b'e': (b'i', 4),             # <<<<<<<<<<<<<<
  *     b'E': (b'I', 4),
  *     b'L': (b'i', 4),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_e, __pyx_mstate_global->__pyx_tuple[7]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_e, __pyx_mstate_global->__pyx_tuple[8]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":29
+  /* "business_logic/coordinate_extractor_cy.pyx":26
  *     b'C': (b'H', 2),
  *     b'e': (b'i', 4),
  *     b'E': (b'I', 4),             # <<<<<<<<<<<<<<
  *     b'L': (b'i', 4),
  *     b'M': (b'B', 1),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_E, __pyx_mstate_global->__pyx_tuple[8]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_E, __pyx_mstate_global->__pyx_tuple[9]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":30
+  /* "business_logic/coordinate_extractor_cy.pyx":27
  *     b'e': (b'i', 4),
  *     b'E': (b'I', 4),
  *     b'L': (b'i', 4),             # <<<<<<<<<<<<<<
  *     b'M': (b'B', 1),
  *     b'q': (b'q', 8),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_L, __pyx_mstate_global->__pyx_tuple[7]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_L, __pyx_mstate_global->__pyx_tuple[8]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":31
+  /* "business_logic/coordinate_extractor_cy.pyx":28
  *     b'E': (b'I', 4),
  *     b'L': (b'i', 4),
  *     b'M': (b'B', 1),             # <<<<<<<<<<<<<<
  *     b'q': (b'q', 8),
  *     b'Q': (b'Q', 8),
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_M, __pyx_mstate_global->__pyx_tuple[4]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_M, __pyx_mstate_global->__pyx_tuple[5]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":32
+  /* "business_logic/coordinate_extractor_cy.pyx":29
  *     b'L': (b'i', 4),
  *     b'M': (b'B', 1),
  *     b'q': (b'q', 8),             # <<<<<<<<<<<<<<
  *     b'Q': (b'Q', 8),
  * }
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_q, __pyx_mstate_global->__pyx_tuple[14]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_q, __pyx_mstate_global->__pyx_tuple[15]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "coordinate_extractor_cy.pyx":33
+  /* "business_logic/coordinate_extractor_cy.pyx":30
  *     b'M': (b'B', 1),
  *     b'q': (b'q', 8),
  *     b'Q': (b'Q', 8),             # <<<<<<<<<<<<<<
  * }
  * 
 */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_Q, __pyx_mstate_global->__pyx_tuple[15]) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_XGOTREF(__pyx_v_23coordinate_extractor_cy_TYPE_MAP);
-  __Pyx_DECREF_SET(__pyx_v_23coordinate_extractor_cy_TYPE_MAP, ((PyObject*)__pyx_t_2));
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_b_Q, __pyx_mstate_global->__pyx_tuple[16]) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_XGOTREF(__pyx_v_14business_logic_23coordinate_extractor_cy_TYPE_MAP);
+  __Pyx_DECREF_SET(__pyx_v_14business_logic_23coordinate_extractor_cy_TYPE_MAP, ((PyObject*)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "coordinate_extractor_cy.pyx":39
- * # STRUCT CACHE
- * # -------------------------------
+  /* "business_logic/coordinate_extractor_cy.pyx":33
+ * }
+ * 
  * cdef dict STRUCT_CACHE = {}             # <<<<<<<<<<<<<<
  * 
  * def get_struct(int type_msg, str fmt_str):
 */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_XGOTREF(__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE);
-  __Pyx_DECREF_SET(__pyx_v_23coordinate_extractor_cy_STRUCT_CACHE, ((PyObject*)__pyx_t_2));
+  __Pyx_XGOTREF(__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE);
+  __Pyx_DECREF_SET(__pyx_v_14business_logic_23coordinate_extractor_cy_STRUCT_CACHE, ((PyObject*)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "coordinate_extractor_cy.pyx":41
+  /* "business_logic/coordinate_extractor_cy.pyx":35
  * cdef dict STRUCT_CACHE = {}
  * 
  * def get_struct(int type_msg, str fmt_str):             # <<<<<<<<<<<<<<
- *     """
- *      struct.Struct object    .
+ *     key = (type_msg, fmt_str)
+ *     if key not in STRUCT_CACHE:
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_23coordinate_extractor_cy_1get_struct, 0, __pyx_mstate_global->__pyx_n_u_get_struct, NULL, __pyx_mstate_global->__pyx_n_u_coordinate_extractor_cy, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14business_logic_23coordinate_extractor_cy_1get_struct, 0, __pyx_mstate_global->__pyx_n_u_get_struct, NULL, __pyx_mstate_global->__pyx_n_u_business_logic_coordinate_extrac, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_get_struct, __pyx_t_2) < (0)) __PYX_ERR(0, 41, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_get_struct, __pyx_t_2) < (0)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "coordinate_extractor_cy.pyx":54
- * # decode_msg
- * # -------------------------------
+  /* "business_logic/coordinate_extractor_cy.pyx":42
+ *     return STRUCT_CACHE[key]
+ * 
  * def decode_msg(bytes msg):             # <<<<<<<<<<<<<<
- *     """
- *     decode  NULL byte
+ *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')
+ * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_23coordinate_extractor_cy_3decode_msg, 0, __pyx_mstate_global->__pyx_n_u_decode_msg, NULL, __pyx_mstate_global->__pyx_n_u_coordinate_extractor_cy, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14business_logic_23coordinate_extractor_cy_3decode_msg, 0, __pyx_mstate_global->__pyx_n_u_decode_msg, NULL, __pyx_mstate_global->__pyx_n_u_business_logic_coordinate_extrac, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_decode_msg, __pyx_t_2) < (0)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_decode_msg, __pyx_t_2) < (0)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "coordinate_extractor_cy.pyx":63
- * # get_value_by_format
- * # -------------------------------
- * def get_value_by_format(bytes payload, str types, str cols, int type_msg):             # <<<<<<<<<<<<<<
- *     """
- *      payload  fmt   TYPE_MAP
+  /* "business_logic/coordinate_extractor_cy.pyx":45
+ *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')
+ * 
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):             # <<<<<<<<<<<<<<
+ *     st = get_struct(type_msg, types)
+ *     try:
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_23coordinate_extractor_cy_5get_value_by_format, 0, __pyx_mstate_global->__pyx_n_u_get_value_by_format, NULL, __pyx_mstate_global->__pyx_n_u_coordinate_extractor_cy, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(((int)0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_get_value_by_format, __pyx_t_2) < (0)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14business_logic_23coordinate_extractor_cy_5get_value_by_format, 0, __pyx_mstate_global->__pyx_n_u_get_value_by_format, NULL, __pyx_mstate_global->__pyx_n_u_business_logic_coordinate_extrac, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_t_3);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_get_value_by_format, __pyx_t_2) < (0)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "coordinate_extractor_cy.pyx":1
+  /* "business_logic/coordinate_extractor_cy.pyx":1
  * # coordinate_extractor_cy.pyx             # <<<<<<<<<<<<<<
  * # cython: language_level=3
  * # cython: boundscheck=False
@@ -4728,9 +5026,10 @@ __Pyx_RefNannySetupContext("PyInit_coordinate_extractor_cy", 0);
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init coordinate_extractor_cy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init business_logic.coordinate_extractor_cy", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -4744,7 +5043,7 @@ __Pyx_RefNannySetupContext("PyInit_coordinate_extractor_cy", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init coordinate_extractor_cy");
+    PyErr_SetString(PyExc_ImportError, "init business_logic.coordinate_extractor_cy");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4786,18 +5085,62 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_32h, sizeof(__pyx_k_32h), 0, 0, 0}, /* PyObject cname: __pyx_kp_b_32h */
   {__pyx_k_4s, sizeof(__pyx_k_4s), 0, 0, 0}, /* PyObject cname: __pyx_kp_b_4s */
   {__pyx_k_64s, sizeof(__pyx_k_64s), 0, 0, 0}, /* PyObject cname: __pyx_kp_b_64s */
+  {__pyx_k_AX, sizeof(__pyx_k_AX), 0, 1, 1}, /* PyObject cname: __pyx_n_u_AX */
+  {__pyx_k_AltE, sizeof(__pyx_k_AltE), 0, 1, 1}, /* PyObject cname: __pyx_n_u_AltE */
   {__pyx_k_B, sizeof(__pyx_k_B), 0, 0, 1}, /* PyObject cname: __pyx_n_b_B */
   {__pyx_k_C, sizeof(__pyx_k_C), 0, 0, 1}, /* PyObject cname: __pyx_n_b_C */
+  {__pyx_k_C, sizeof(__pyx_k_C), 0, 1, 1}, /* PyObject cname: __pyx_n_u_C */
+  {__pyx_k_DesPitch, sizeof(__pyx_k_DesPitch), 0, 1, 1}, /* PyObject cname: __pyx_n_u_DesPitch */
+  {__pyx_k_DesRoll, sizeof(__pyx_k_DesRoll), 0, 1, 1}, /* PyObject cname: __pyx_n_u_DesRoll */
   {__pyx_k_E, sizeof(__pyx_k_E), 0, 0, 1}, /* PyObject cname: __pyx_n_b_E */
+  {__pyx_k_E, sizeof(__pyx_k_E), 0, 1, 1}, /* PyObject cname: __pyx_n_u_E */
+  {__pyx_k_ErrRP, sizeof(__pyx_k_ErrRP), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ErrRP */
+  {__pyx_k_GZ, sizeof(__pyx_k_GZ), 0, 1, 1}, /* PyObject cname: __pyx_n_u_GZ */
   {__pyx_k_H, sizeof(__pyx_k_H), 0, 0, 1}, /* PyObject cname: __pyx_n_b_H */
+  {__pyx_k_HAGL, sizeof(__pyx_k_HAGL), 0, 1, 1}, /* PyObject cname: __pyx_n_u_HAGL */
+  {__pyx_k_HAcc, sizeof(__pyx_k_HAcc), 0, 1, 1}, /* PyObject cname: __pyx_n_u_HAcc */
+  {__pyx_k_HDop, sizeof(__pyx_k_HDop), 0, 1, 1}, /* PyObject cname: __pyx_n_u_HDop */
   {__pyx_k_I, sizeof(__pyx_k_I), 0, 0, 1}, /* PyObject cname: __pyx_n_b_I */
+  {__pyx_k_IPD, sizeof(__pyx_k_IPD), 0, 1, 1}, /* PyObject cname: __pyx_n_u_IPD */
+  {__pyx_k_IPE, sizeof(__pyx_k_IPE), 0, 1, 1}, /* PyObject cname: __pyx_n_u_IPE */
+  {__pyx_k_IPN, sizeof(__pyx_k_IPN), 0, 1, 1}, /* PyObject cname: __pyx_n_u_IPN */
+  {__pyx_k_IVT, sizeof(__pyx_k_IVT), 0, 1, 1}, /* PyObject cname: __pyx_n_u_IVT */
+  {__pyx_k_IYAW, sizeof(__pyx_k_IYAW), 0, 1, 1}, /* PyObject cname: __pyx_n_u_IYAW */
   {__pyx_k_L, sizeof(__pyx_k_L), 0, 0, 1}, /* PyObject cname: __pyx_n_b_L */
+  {__pyx_k_L, sizeof(__pyx_k_L), 0, 1, 1}, /* PyObject cname: __pyx_n_u_L */
+  {__pyx_k_Lat, sizeof(__pyx_k_Lat), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Lat */
+  {__pyx_k_Lng, sizeof(__pyx_k_Lng), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Lng */
   {__pyx_k_M, sizeof(__pyx_k_M), 0, 0, 1}, /* PyObject cname: __pyx_n_b_M */
   {__pyx_k_N, sizeof(__pyx_k_N), 0, 0, 1}, /* PyObject cname: __pyx_n_b_N */
+  {__pyx_k_N, sizeof(__pyx_k_N), 0, 1, 1}, /* PyObject cname: __pyx_n_u_N */
+  {__pyx_k_NavBrg, sizeof(__pyx_k_NavBrg), 0, 1, 1}, /* PyObject cname: __pyx_n_u_NavBrg */
+  {__pyx_k_NavPitch, sizeof(__pyx_k_NavPitch), 0, 1, 1}, /* PyObject cname: __pyx_n_u_NavPitch */
+  {__pyx_k_NavRoll, sizeof(__pyx_k_NavRoll), 0, 1, 1}, /* PyObject cname: __pyx_n_u_NavRoll */
   {__pyx_k_Note_that_Cython_is_deliberately, sizeof(__pyx_k_Note_that_Cython_is_deliberately), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Note_that_Cython_is_deliberately */
+  {__pyx_k_Pitch, sizeof(__pyx_k_Pitch), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Pitch */
   {__pyx_k_Q, sizeof(__pyx_k_Q), 0, 0, 1}, /* PyObject cname: __pyx_n_b_Q */
+  {__pyx_k_ROUND_SET, sizeof(__pyx_k_ROUND_SET), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ROUND_SET */
+  {__pyx_k_Roll, sizeof(__pyx_k_Roll), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Roll */
+  {__pyx_k_SAcc, sizeof(__pyx_k_SAcc), 0, 1, 1}, /* PyObject cname: __pyx_n_u_SAcc */
+  {__pyx_k_SH, sizeof(__pyx_k_SH), 0, 1, 1}, /* PyObject cname: __pyx_n_u_SH */
+  {__pyx_k_SM, sizeof(__pyx_k_SM), 0, 1, 1}, /* PyObject cname: __pyx_n_u_SM */
+  {__pyx_k_SP, sizeof(__pyx_k_SP), 0, 1, 1}, /* PyObject cname: __pyx_n_u_SP */
+  {__pyx_k_SVT, sizeof(__pyx_k_SVT), 0, 1, 1}, /* PyObject cname: __pyx_n_u_SVT */
   {__pyx_k_Struct, sizeof(__pyx_k_Struct), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Struct */
+  {__pyx_k_TAT, sizeof(__pyx_k_TAT), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TAT */
+  {__pyx_k_TAW, sizeof(__pyx_k_TAW), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TAW */
+  {__pyx_k_TAsp, sizeof(__pyx_k_TAsp), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TAsp */
+  {__pyx_k_TBrg, sizeof(__pyx_k_TBrg), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TBrg */
+  {__pyx_k_TLat, sizeof(__pyx_k_TLat), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TLat */
+  {__pyx_k_TLng, sizeof(__pyx_k_TLng), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TLng */
+  {__pyx_k_Temp, sizeof(__pyx_k_Temp), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Temp */
+  {__pyx_k_VAcc, sizeof(__pyx_k_VAcc), 0, 1, 1}, /* PyObject cname: __pyx_n_u_VAcc */
+  {__pyx_k_VDop, sizeof(__pyx_k_VDop), 0, 1, 1}, /* PyObject cname: __pyx_n_u_VDop */
+  {__pyx_k_VWE, sizeof(__pyx_k_VWE), 0, 1, 1}, /* PyObject cname: __pyx_n_u_VWE */
+  {__pyx_k_VWN, sizeof(__pyx_k_VWN), 0, 1, 1}, /* PyObject cname: __pyx_n_u_VWN */
+  {__pyx_k_Yaw, sizeof(__pyx_k_Yaw), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Yaw */
   {__pyx_k_Z, sizeof(__pyx_k_Z), 0, 0, 1}, /* PyObject cname: __pyx_n_b_Z */
+  {__pyx_k_Z, sizeof(__pyx_k_Z), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Z */
   {__pyx_k__2, sizeof(__pyx_k__2), 0, 0, 0}, /* PyObject cname: __pyx_kp_b__2 */
   {__pyx_k__3, sizeof(__pyx_k__3), 0, 0, 0}, /* PyObject cname: __pyx_kp_b__3 */
   {__pyx_k__4, sizeof(__pyx_k__4), 0, 1, 0}, /* PyObject cname: __pyx_kp_u__4 */
@@ -4807,18 +5150,20 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_ascii, sizeof(__pyx_k_ascii), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ascii */
   {__pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 1, 1}, /* PyObject cname: __pyx_n_u_asyncio_coroutines */
   {__pyx_k_b, sizeof(__pyx_k_b), 0, 0, 1}, /* PyObject cname: __pyx_n_b_b */
+  {__pyx_k_business_logic_coordinate_extrac, sizeof(__pyx_k_business_logic_coordinate_extrac), 0, 1, 1}, /* PyObject cname: __pyx_n_u_business_logic_coordinate_extrac */
   {__pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1}, /* PyObject cname: __pyx_n_b_c */
+  {__pyx_k_c, sizeof(__pyx_k_c), 0, 1, 1}, /* PyObject cname: __pyx_n_u_c */
   {__pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 1, 1}, /* PyObject cname: __pyx_n_u_cline_in_traceback */
   {__pyx_k_close, sizeof(__pyx_k_close), 0, 1, 1}, /* PyObject cname: __pyx_n_u_close */
   {__pyx_k_cols, sizeof(__pyx_k_cols), 0, 1, 1}, /* PyObject cname: __pyx_n_u_cols */
   {__pyx_k_cols_list, sizeof(__pyx_k_cols_list), 0, 1, 1}, /* PyObject cname: __pyx_n_u_cols_list */
-  {__pyx_k_coordinate_extractor_cy, sizeof(__pyx_k_coordinate_extractor_cy), 0, 1, 1}, /* PyObject cname: __pyx_n_u_coordinate_extractor_cy */
   {__pyx_k_coordinate_extractor_cy_pyx, sizeof(__pyx_k_coordinate_extractor_cy_pyx), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_coordinate_extractor_cy_pyx */
   {__pyx_k_d, sizeof(__pyx_k_d), 0, 0, 1}, /* PyObject cname: __pyx_n_b_d */
   {__pyx_k_decode, sizeof(__pyx_k_decode), 0, 1, 1}, /* PyObject cname: __pyx_n_u_decode */
   {__pyx_k_decode_msg, sizeof(__pyx_k_decode_msg), 0, 1, 1}, /* PyObject cname: __pyx_n_u_decode_msg */
   {__pyx_k_disable, sizeof(__pyx_k_disable), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_disable */
   {__pyx_k_e, sizeof(__pyx_k_e), 0, 0, 1}, /* PyObject cname: __pyx_n_b_e */
+  {__pyx_k_e, sizeof(__pyx_k_e), 0, 1, 1}, /* PyObject cname: __pyx_n_u_e */
   {__pyx_k_enable, sizeof(__pyx_k_enable), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_enable */
   {__pyx_k_error, sizeof(__pyx_k_error), 0, 1, 1}, /* PyObject cname: __pyx_n_u_error */
   {__pyx_k_f, sizeof(__pyx_k_f), 0, 0, 1}, /* PyObject cname: __pyx_n_b_f */
@@ -4844,6 +5189,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_module, sizeof(__pyx_k_module), 0, 1, 1}, /* PyObject cname: __pyx_n_u_module */
   {__pyx_k_msg, sizeof(__pyx_k_msg), 0, 1, 1}, /* PyObject cname: __pyx_n_u_msg */
   {__pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1}, /* PyObject cname: __pyx_n_b_n */
+  {__pyx_k_n, sizeof(__pyx_k_n), 0, 1, 1}, /* PyObject cname: __pyx_n_u_n */
   {__pyx_k_name, sizeof(__pyx_k_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_name */
   {__pyx_k_next, sizeof(__pyx_k_next), 0, 1, 1}, /* PyObject cname: __pyx_n_u_next */
   {__pyx_k_partition, sizeof(__pyx_k_partition), 0, 1, 1}, /* PyObject cname: __pyx_n_u_partition */
@@ -4853,6 +5199,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 1, 1}, /* PyObject cname: __pyx_n_u_qualname */
   {__pyx_k_range, sizeof(__pyx_k_range), 0, 1, 1}, /* PyObject cname: __pyx_n_u_range */
   {__pyx_k_result, sizeof(__pyx_k_result), 0, 1, 1}, /* PyObject cname: __pyx_n_u_result */
+  {__pyx_k_round, sizeof(__pyx_k_round), 0, 1, 1}, /* PyObject cname: __pyx_n_u_round */
   {__pyx_k_send, sizeof(__pyx_k_send), 0, 1, 1}, /* PyObject cname: __pyx_n_u_send */
   {__pyx_k_set_name, sizeof(__pyx_k_set_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_set_name */
   {__pyx_k_spec, sizeof(__pyx_k_spec), 0, 1, 1}, /* PyObject cname: __pyx_n_u_spec */
@@ -4861,6 +5208,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_t, sizeof(__pyx_k_t), 0, 1, 1}, /* PyObject cname: __pyx_n_u_t */
   {__pyx_k_test, sizeof(__pyx_k_test), 0, 1, 1}, /* PyObject cname: __pyx_n_u_test */
   {__pyx_k_throw, sizeof(__pyx_k_throw), 0, 1, 1}, /* PyObject cname: __pyx_n_u_throw */
+  {__pyx_k_to_round, sizeof(__pyx_k_to_round), 0, 1, 1}, /* PyObject cname: __pyx_n_u_to_round */
   {__pyx_k_type_msg, sizeof(__pyx_k_type_msg), 0, 1, 1}, /* PyObject cname: __pyx_n_u_type_msg */
   {__pyx_k_types, sizeof(__pyx_k_types), 0, 1, 1}, /* PyObject cname: __pyx_n_u_types */
   {__pyx_k_unpack_from, sizeof(__pyx_k_unpack_from), 0, 1, 1}, /* PyObject cname: __pyx_n_u_unpack_from */
@@ -4877,7 +5225,8 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry const *t, PyObject **target, c
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_range); if (!__pyx_builtin_range) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_range); if (!__pyx_builtin_range) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_round); if (!__pyx_builtin_round) __PYX_ERR(0, 73, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4889,181 +5238,192 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "coordinate_extractor_cy.pyx":47
+  /* "business_logic/coordinate_extractor_cy.pyx":38
  *     key = (type_msg, fmt_str)
  *     if key not in STRUCT_CACHE:
  *         fmt = b''.join(TYPE_MAP.get(t.encode('utf-8'), (b'x', 1))[0] for t in fmt_str)             # <<<<<<<<<<<<<<
  *         STRUCT_CACHE[key] = struct.Struct(b'<' + fmt)
  *     return STRUCT_CACHE[key]
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_x, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_x, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "coordinate_extractor_cy.pyx":58
- *     decode  NULL byte
- *     """
+  /* "business_logic/coordinate_extractor_cy.pyx":43
+ * 
+ * def decode_msg(bytes msg):
  *     return msg.partition(b'\x00')[0].decode('ascii', 'ignore')             # <<<<<<<<<<<<<<
  * 
- * # -------------------------------
+ * def get_value_by_format(bytes payload, str types, str cols, int type_msg, bint to_round=False):
 */
-  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_ascii, __pyx_mstate_global->__pyx_n_u_ignore); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_ascii, __pyx_mstate_global->__pyx_n_u_ignore); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "coordinate_extractor_cy.pyx":14
- * # -------------------------------
+  /* "business_logic/coordinate_extractor_cy.pyx":58
+ *     cdef str t
+ * 
+ *     ROUND_SET = frozenset([             # <<<<<<<<<<<<<<
+ *         "Lat", "Lng", "TLat", "TLng", "Pitch", "IPE", "Yaw", "IPN", "IYAW",
+ *         "DesPitch", "NavPitch", "Temp", "AltE", "VDop", "VAcc", "Roll",
+*/
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(38, __pyx_mstate_global->__pyx_n_u_Lat, __pyx_mstate_global->__pyx_n_u_Lng, __pyx_mstate_global->__pyx_n_u_TLat, __pyx_mstate_global->__pyx_n_u_TLng, __pyx_mstate_global->__pyx_n_u_Pitch, __pyx_mstate_global->__pyx_n_u_IPE, __pyx_mstate_global->__pyx_n_u_Yaw, __pyx_mstate_global->__pyx_n_u_IPN, __pyx_mstate_global->__pyx_n_u_IYAW, __pyx_mstate_global->__pyx_n_u_DesPitch, __pyx_mstate_global->__pyx_n_u_NavPitch, __pyx_mstate_global->__pyx_n_u_Temp, __pyx_mstate_global->__pyx_n_u_AltE, __pyx_mstate_global->__pyx_n_u_VDop, __pyx_mstate_global->__pyx_n_u_VAcc, __pyx_mstate_global->__pyx_n_u_Roll, __pyx_mstate_global->__pyx_n_u_HAGL, __pyx_mstate_global->__pyx_n_u_SM, __pyx_mstate_global->__pyx_n_u_VWN, __pyx_mstate_global->__pyx_n_u_VWE, __pyx_mstate_global->__pyx_n_u_IVT, __pyx_mstate_global->__pyx_n_u_SAcc, __pyx_mstate_global->__pyx_n_u_TAW, __pyx_mstate_global->__pyx_n_u_IPD, __pyx_mstate_global->__pyx_n_u_ErrRP, __pyx_mstate_global->__pyx_n_u_SVT, __pyx_mstate_global->__pyx_n_u_SP, __pyx_mstate_global->__pyx_n_u_TAT, __pyx_mstate_global->__pyx_n_u_GZ, __pyx_mstate_global->__pyx_n_u_HDop, __pyx_mstate_global->__pyx_n_u_NavRoll, __pyx_mstate_global->__pyx_n_u_NavBrg, __pyx_mstate_global->__pyx_n_u_TAsp, __pyx_mstate_global->__pyx_n_u_HAcc, __pyx_mstate_global->__pyx_n_u_DesRoll, __pyx_mstate_global->__pyx_n_u_SH, __pyx_mstate_global->__pyx_n_u_TBrg, __pyx_mstate_global->__pyx_n_u_AX); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
+
+  /* "business_logic/coordinate_extractor_cy.pyx":11
+ * 
  * cdef dict TYPE_MAP = {
  *     b'a': (b'32h', 64),             # <<<<<<<<<<<<<<
  *     b'b': (b'b', 1),
  *     b'B': (b'B', 1),
 */
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_32h, __pyx_mstate_global->__pyx_int_64); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
+  __pyx_mstate_global->__pyx_tuple[3] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_32h, __pyx_mstate_global->__pyx_int_64); if (unlikely(!__pyx_mstate_global->__pyx_tuple[3])) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[3]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[3]);
 
-  /* "coordinate_extractor_cy.pyx":15
+  /* "business_logic/coordinate_extractor_cy.pyx":12
  * cdef dict TYPE_MAP = {
  *     b'a': (b'32h', 64),
  *     b'b': (b'b', 1),             # <<<<<<<<<<<<<<
  *     b'B': (b'B', 1),
  *     b'h': (b'h', 2),
 */
-  __pyx_mstate_global->__pyx_tuple[3] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_b, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[3])) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[3]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[3]);
+  __pyx_mstate_global->__pyx_tuple[4] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_b, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[4])) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[4]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[4]);
 
-  /* "coordinate_extractor_cy.pyx":16
+  /* "business_logic/coordinate_extractor_cy.pyx":13
  *     b'a': (b'32h', 64),
  *     b'b': (b'b', 1),
  *     b'B': (b'B', 1),             # <<<<<<<<<<<<<<
  *     b'h': (b'h', 2),
  *     b'H': (b'H', 2),
 */
-  __pyx_mstate_global->__pyx_tuple[4] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_B, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[4])) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[4]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[4]);
+  __pyx_mstate_global->__pyx_tuple[5] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_B, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[5])) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[5]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[5]);
 
-  /* "coordinate_extractor_cy.pyx":17
+  /* "business_logic/coordinate_extractor_cy.pyx":14
  *     b'b': (b'b', 1),
  *     b'B': (b'B', 1),
  *     b'h': (b'h', 2),             # <<<<<<<<<<<<<<
  *     b'H': (b'H', 2),
  *     b'i': (b'i', 4),
 */
-  __pyx_mstate_global->__pyx_tuple[5] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_h, __pyx_mstate_global->__pyx_int_2); if (unlikely(!__pyx_mstate_global->__pyx_tuple[5])) __PYX_ERR(0, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[5]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[5]);
+  __pyx_mstate_global->__pyx_tuple[6] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_h, __pyx_mstate_global->__pyx_int_2); if (unlikely(!__pyx_mstate_global->__pyx_tuple[6])) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[6]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[6]);
 
-  /* "coordinate_extractor_cy.pyx":18
+  /* "business_logic/coordinate_extractor_cy.pyx":15
  *     b'B': (b'B', 1),
  *     b'h': (b'h', 2),
  *     b'H': (b'H', 2),             # <<<<<<<<<<<<<<
  *     b'i': (b'i', 4),
  *     b'I': (b'I', 4),
 */
-  __pyx_mstate_global->__pyx_tuple[6] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_H, __pyx_mstate_global->__pyx_int_2); if (unlikely(!__pyx_mstate_global->__pyx_tuple[6])) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[6]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[6]);
+  __pyx_mstate_global->__pyx_tuple[7] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_H, __pyx_mstate_global->__pyx_int_2); if (unlikely(!__pyx_mstate_global->__pyx_tuple[7])) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[7]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[7]);
 
-  /* "coordinate_extractor_cy.pyx":19
+  /* "business_logic/coordinate_extractor_cy.pyx":16
  *     b'h': (b'h', 2),
  *     b'H': (b'H', 2),
  *     b'i': (b'i', 4),             # <<<<<<<<<<<<<<
  *     b'I': (b'I', 4),
  *     b'f': (b'f', 4),
 */
-  __pyx_mstate_global->__pyx_tuple[7] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_i, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[7])) __PYX_ERR(0, 19, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[7]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[7]);
+  __pyx_mstate_global->__pyx_tuple[8] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_i, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[8])) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[8]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[8]);
 
-  /* "coordinate_extractor_cy.pyx":20
+  /* "business_logic/coordinate_extractor_cy.pyx":17
  *     b'H': (b'H', 2),
  *     b'i': (b'i', 4),
  *     b'I': (b'I', 4),             # <<<<<<<<<<<<<<
  *     b'f': (b'f', 4),
  *     b'd': (b'd', 8),
 */
-  __pyx_mstate_global->__pyx_tuple[8] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_I, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[8])) __PYX_ERR(0, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[8]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[8]);
+  __pyx_mstate_global->__pyx_tuple[9] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_I, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[9])) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[9]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[9]);
 
-  /* "coordinate_extractor_cy.pyx":21
+  /* "business_logic/coordinate_extractor_cy.pyx":18
  *     b'i': (b'i', 4),
  *     b'I': (b'I', 4),
  *     b'f': (b'f', 4),             # <<<<<<<<<<<<<<
  *     b'd': (b'd', 8),
  *     b'n': (b'4s', 4),
 */
-  __pyx_mstate_global->__pyx_tuple[9] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_f, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[9])) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[9]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[9]);
+  __pyx_mstate_global->__pyx_tuple[10] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_f, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[10])) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[10]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[10]);
 
-  /* "coordinate_extractor_cy.pyx":22
+  /* "business_logic/coordinate_extractor_cy.pyx":19
  *     b'I': (b'I', 4),
  *     b'f': (b'f', 4),
  *     b'd': (b'd', 8),             # <<<<<<<<<<<<<<
  *     b'n': (b'4s', 4),
  *     b'N': (b'16s', 16),
 */
-  __pyx_mstate_global->__pyx_tuple[10] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_d, __pyx_mstate_global->__pyx_int_8); if (unlikely(!__pyx_mstate_global->__pyx_tuple[10])) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[10]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[10]);
+  __pyx_mstate_global->__pyx_tuple[11] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_d, __pyx_mstate_global->__pyx_int_8); if (unlikely(!__pyx_mstate_global->__pyx_tuple[11])) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[11]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[11]);
 
-  /* "coordinate_extractor_cy.pyx":23
+  /* "business_logic/coordinate_extractor_cy.pyx":20
  *     b'f': (b'f', 4),
  *     b'd': (b'd', 8),
  *     b'n': (b'4s', 4),             # <<<<<<<<<<<<<<
  *     b'N': (b'16s', 16),
  *     b'Z': (b'64s', 64),
 */
-  __pyx_mstate_global->__pyx_tuple[11] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_4s, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[11])) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[11]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[11]);
+  __pyx_mstate_global->__pyx_tuple[12] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_4s, __pyx_mstate_global->__pyx_int_4); if (unlikely(!__pyx_mstate_global->__pyx_tuple[12])) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[12]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[12]);
 
-  /* "coordinate_extractor_cy.pyx":24
+  /* "business_logic/coordinate_extractor_cy.pyx":21
  *     b'd': (b'd', 8),
  *     b'n': (b'4s', 4),
  *     b'N': (b'16s', 16),             # <<<<<<<<<<<<<<
  *     b'Z': (b'64s', 64),
  *     b'c': (b'h', 2),
 */
-  __pyx_mstate_global->__pyx_tuple[12] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_16s, __pyx_mstate_global->__pyx_int_16); if (unlikely(!__pyx_mstate_global->__pyx_tuple[12])) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[12]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[12]);
+  __pyx_mstate_global->__pyx_tuple[13] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_16s, __pyx_mstate_global->__pyx_int_16); if (unlikely(!__pyx_mstate_global->__pyx_tuple[13])) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[13]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[13]);
 
-  /* "coordinate_extractor_cy.pyx":25
+  /* "business_logic/coordinate_extractor_cy.pyx":22
  *     b'n': (b'4s', 4),
  *     b'N': (b'16s', 16),
  *     b'Z': (b'64s', 64),             # <<<<<<<<<<<<<<
  *     b'c': (b'h', 2),
  *     b'C': (b'H', 2),
 */
-  __pyx_mstate_global->__pyx_tuple[13] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_64s, __pyx_mstate_global->__pyx_int_64); if (unlikely(!__pyx_mstate_global->__pyx_tuple[13])) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[13]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[13]);
+  __pyx_mstate_global->__pyx_tuple[14] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_kp_b_64s, __pyx_mstate_global->__pyx_int_64); if (unlikely(!__pyx_mstate_global->__pyx_tuple[14])) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[14]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[14]);
 
-  /* "coordinate_extractor_cy.pyx":32
+  /* "business_logic/coordinate_extractor_cy.pyx":29
  *     b'L': (b'i', 4),
  *     b'M': (b'B', 1),
  *     b'q': (b'q', 8),             # <<<<<<<<<<<<<<
  *     b'Q': (b'Q', 8),
  * }
 */
-  __pyx_mstate_global->__pyx_tuple[14] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_q, __pyx_mstate_global->__pyx_int_8); if (unlikely(!__pyx_mstate_global->__pyx_tuple[14])) __PYX_ERR(0, 32, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[14]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[14]);
+  __pyx_mstate_global->__pyx_tuple[15] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_q, __pyx_mstate_global->__pyx_int_8); if (unlikely(!__pyx_mstate_global->__pyx_tuple[15])) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[15]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[15]);
 
-  /* "coordinate_extractor_cy.pyx":33
+  /* "business_logic/coordinate_extractor_cy.pyx":30
  *     b'M': (b'B', 1),
  *     b'q': (b'q', 8),
  *     b'Q': (b'Q', 8),             # <<<<<<<<<<<<<<
  * }
  * 
 */
-  __pyx_mstate_global->__pyx_tuple[15] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_Q, __pyx_mstate_global->__pyx_int_8); if (unlikely(!__pyx_mstate_global->__pyx_tuple[15])) __PYX_ERR(0, 33, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[15]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[15]);
+  __pyx_mstate_global->__pyx_tuple[16] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_b_Q, __pyx_mstate_global->__pyx_int_8); if (unlikely(!__pyx_mstate_global->__pyx_tuple[16])) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[16]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[16]);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5081,9 +5441,11 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   __pyx_mstate->__pyx_umethod_PyBytes_Type__partition.type = (PyObject*)(&PyBytes_Type);
   __pyx_mstate->__pyx_umethod_PyBytes_Type__partition.method_name = &__pyx_mstate->__pyx_n_u_partition;
   if (__Pyx_InitStrings(__pyx_string_tab, __pyx_mstate->__pyx_string_tab, __pyx_string_tab_encodings) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  __pyx_mstate->__pyx_float_1eneg_7 = PyFloat_FromDouble(1e-7); if (unlikely(!__pyx_mstate->__pyx_float_1eneg_7)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_int_1 = PyLong_FromLong(1); if (unlikely(!__pyx_mstate->__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_int_2 = PyLong_FromLong(2); if (unlikely(!__pyx_mstate->__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_int_4 = PyLong_FromLong(4); if (unlikely(!__pyx_mstate->__pyx_int_4)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_mstate->__pyx_int_7 = PyLong_FromLong(7); if (unlikely(!__pyx_mstate->__pyx_int_7)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_int_8 = PyLong_FromLong(8); if (unlikely(!__pyx_mstate->__pyx_int_8)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_int_16 = PyLong_FromLong(16); if (unlikely(!__pyx_mstate->__pyx_int_16)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_int_64 = PyLong_FromLong(64); if (unlikely(!__pyx_mstate->__pyx_int_64)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -5101,7 +5463,7 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
             unsigned int nlocals : 4;
             unsigned int flags : 10;
             unsigned int first_line : 6;
-            unsigned int line_table_length : 12;
+            unsigned int line_table_length : 13;
         } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
 static PyObject* __Pyx_PyCode_New(
@@ -5118,24 +5480,24 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 47, 2};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 38, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_t};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_coordinate_extractor_cy_pyx, __pyx_mstate->__pyx_n_u_genexpr, __pyx_k__6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 41, 60};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 35, 58};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_type_msg, __pyx_mstate->__pyx_n_u_fmt_str, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_fmt, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_coordinate_extractor_cy_pyx, __pyx_mstate->__pyx_n_u_get_struct, __pyx_k_Q_t7_c_A_AWF_r_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 54, 27};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 42, 25};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_msg};
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_coordinate_extractor_cy_pyx, __pyx_mstate->__pyx_n_u_decode_msg, __pyx_k_3j_G1IQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 63, 170};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_payload, __pyx_mstate->__pyx_n_u_types, __pyx_mstate->__pyx_n_u_cols, __pyx_mstate->__pyx_n_u_type_msg, __pyx_mstate->__pyx_n_u_st, __pyx_mstate->__pyx_n_u_values, __pyx_mstate->__pyx_n_u_cols_list, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_t, __pyx_mstate->__pyx_n_u_val};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_coordinate_extractor_cy_pyx, __pyx_mstate->__pyx_n_u_get_value_by_format, __pyx_k_1Ja_q_q_F_1_Q_U_3aq_E_fAQ_2T_T, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 13, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 45, 333};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_payload, __pyx_mstate->__pyx_n_u_types, __pyx_mstate->__pyx_n_u_cols, __pyx_mstate->__pyx_n_u_type_msg, __pyx_mstate->__pyx_n_u_to_round, __pyx_mstate->__pyx_n_u_st, __pyx_mstate->__pyx_n_u_values, __pyx_mstate->__pyx_n_u_cols_list, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_val, __pyx_mstate->__pyx_n_u_t, __pyx_mstate->__pyx_n_u_ROUND_SET};
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_coordinate_extractor_cy_pyx, __pyx_mstate->__pyx_n_u_get_value_by_format, __pyx_k_J_1Ja_q_q_F_1_Q_whhiwgWA_L_gWG8, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -7178,6 +7540,55 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
 }
 #endif
 
+/* PyObjectCallNoArg */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+    PyObject *arg[2] = {NULL, NULL};
+    return __Pyx_PyObject_FastCall(func, arg + 1, 0 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
+}
+
+/* pyfrozenset_new */
+static CYTHON_INLINE PyObject* __Pyx_PyFrozenSet_New(PyObject* it) {
+    if (it) {
+        PyObject* result;
+#if CYTHON_COMPILING_IN_PYPY
+        PyObject* args;
+        args = PyTuple_Pack(1, it);
+        if (unlikely(!args))
+            return NULL;
+        result = PyObject_Call((PyObject*)&PyFrozenSet_Type, args, NULL);
+        Py_DECREF(args);
+        return result;
+#else
+        if (PyFrozenSet_CheckExact(it)) {
+            Py_INCREF(it);
+            return it;
+        }
+        result = PyFrozenSet_New(it);
+        if (unlikely(!result))
+            return NULL;
+        if ((__PYX_LIMITED_VERSION_HEX >= 0x030A0000)
+#if CYTHON_COMPILING_IN_LIMITED_API
+            || __Pyx_get_runtime_version() >= 0x030A0000
+#endif
+            )
+            return result;
+        {
+            Py_ssize_t size = __Pyx_PySet_GET_SIZE(result);
+            if (likely(size > 0))
+                return result;
+#if !CYTHON_ASSUME_SAFE_SIZE
+            if (unlikely(size < 0)) {
+                Py_DECREF(result);
+                return NULL;
+            }
+#endif
+        }
+        Py_DECREF(result);
+#endif
+    }
+    return __Pyx_PyObject_CallNoArg((PyObject*) &PyFrozenSet_Type);
+}
+
 /* SetStringIndexingError */
 static void __Pyx_SetStringIndexingError(const char* message, int has_gil) {
     if (!has_gil) {
@@ -7212,135 +7623,90 @@ static CYTHON_INLINE Py_UCS4 __Pyx_GetItemInt_Unicode_Fast(PyObject* ustring, Py
 
 /* PyLongBinop */
 #if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_Fallback___Pyx_PyLong_MultiplyObjC(PyObject *op1, PyObject *op2, int inplace) {
-    return (inplace ? PyNumber_InPlaceMultiply : PyNumber_Multiply)(op1, op2);
+static PyObject* __Pyx_Fallback___Pyx_PyLong_TrueDivideObjC(PyObject *op1, PyObject *op2, int inplace) {
+    return (inplace ? PyNumber_InPlaceTrueDivide : PyNumber_TrueDivide)(op1, op2);
 }
 #if CYTHON_USE_PYLONG_INTERNALS
-static PyObject* __Pyx_Unpacked___Pyx_PyLong_MultiplyObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check) {
+static PyObject* __Pyx_Unpacked___Pyx_PyLong_TrueDivideObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check) {
     CYTHON_MAYBE_UNUSED_VAR(inplace);
     CYTHON_UNUSED_VAR(zerodivision_check);
     const long b = intval;
     long a, x;
-#ifdef HAVE_LONG_LONG
-    const PY_LONG_LONG llb = intval;
-    PY_LONG_LONG lla, llx;
-#endif
     if (unlikely(__Pyx_PyLong_IsZero(op1))) {
-        return __Pyx_NewRef(op1);
     }
     if (unlikely(!__Pyx_PyLong_CompactAsLong(op1, &a))) {
         const digit* digits = __Pyx_PyLong_Digits(op1);
         const Py_ssize_t size = __Pyx_PyLong_SignedDigitCount(op1);
         switch (size) {
             case -2:
-                if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT+30) {
+                if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT && 1 * PyLong_SHIFT < 53) {
                     a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
                     break;
-                #ifdef HAVE_LONG_LONG
-                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT+30) {
-                    lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                    goto long_long;
-                #endif
                 }
                 CYTHON_FALLTHROUGH;
             case 2:
-                if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT+30) {
+                if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT && 1 * PyLong_SHIFT < 53) {
                     a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
                     break;
-                #ifdef HAVE_LONG_LONG
-                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT+30) {
-                    lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                    goto long_long;
-                #endif
                 }
                 CYTHON_FALLTHROUGH;
             case -3:
-                if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT+30) {
+                if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT && 2 * PyLong_SHIFT < 53) {
                     a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
                     break;
-                #ifdef HAVE_LONG_LONG
-                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT+30) {
-                    lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                    goto long_long;
-                #endif
                 }
                 CYTHON_FALLTHROUGH;
             case 3:
-                if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT+30) {
+                if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT && 2 * PyLong_SHIFT < 53) {
                     a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
                     break;
-                #ifdef HAVE_LONG_LONG
-                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT+30) {
-                    lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                    goto long_long;
-                #endif
                 }
                 CYTHON_FALLTHROUGH;
             case -4:
-                if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT+30) {
+                if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT && 3 * PyLong_SHIFT < 53) {
                     a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
                     break;
-                #ifdef HAVE_LONG_LONG
-                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT+30) {
-                    lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                    goto long_long;
-                #endif
                 }
                 CYTHON_FALLTHROUGH;
             case 4:
-                if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT+30) {
+                if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT && 3 * PyLong_SHIFT < 53) {
                     a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
                     break;
-                #ifdef HAVE_LONG_LONG
-                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT+30) {
-                    lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                    goto long_long;
-                #endif
                 }
                 CYTHON_FALLTHROUGH;
-            default: return PyLong_Type.tp_as_number->nb_multiply(op1, op2);
+            default: return PyLong_Type.tp_as_number->nb_true_divide(op1, op2);
         }
     }
-            CYTHON_UNUSED_VAR(a);
-            CYTHON_UNUSED_VAR(b);
-            #ifdef HAVE_LONG_LONG
-            lla = a;
-            goto long_long;
-            #else
-            return PyLong_Type.tp_as_number->nb_multiply(op1, op2);
-            #endif
+            if ((8 * sizeof(long) <= 53 || likely(labs(a) <= ((PY_LONG_LONG)1 << 53)))
+                    || __Pyx_PyLong_DigitCount(op1) <= 52 / PyLong_SHIFT) {
+                return PyFloat_FromDouble((double)a / (double)b);
+            }
+            return PyLong_Type.tp_as_number->nb_true_divide(op1, op2);
         return PyLong_FromLong(x);
-#ifdef HAVE_LONG_LONG
-    long_long:
-            llx = lla * llb;
-        return PyLong_FromLongLong(llx);
-#endif
-    return __Pyx_Fallback___Pyx_PyLong_MultiplyObjC(op1, op2, inplace);
-    
     
 }
 #endif
-static PyObject* __Pyx_Float___Pyx_PyLong_MultiplyObjC(PyObject *float_val, long intval, int zerodivision_check) {
+static PyObject* __Pyx_Float___Pyx_PyLong_TrueDivideObjC(PyObject *float_val, long intval, int zerodivision_check) {
     CYTHON_UNUSED_VAR(zerodivision_check);
     const long b = intval;
     double a = __Pyx_PyFloat_AS_DOUBLE(float_val);
         double result;
         
-        result = ((double)a) * (double)b;
+        result = ((double)a) / (double)b;
         return PyFloat_FromDouble(result);
 }
-static CYTHON_INLINE PyObject* __Pyx_PyLong_MultiplyObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check) {
+static CYTHON_INLINE PyObject* __Pyx_PyLong_TrueDivideObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check) {
     CYTHON_MAYBE_UNUSED_VAR(intval);
     CYTHON_UNUSED_VAR(zerodivision_check);
     #if CYTHON_USE_PYLONG_INTERNALS
     if (likely(PyLong_CheckExact(op1))) {
-        return __Pyx_Unpacked___Pyx_PyLong_MultiplyObjC(op1, op2, intval, inplace, zerodivision_check);
+        return __Pyx_Unpacked___Pyx_PyLong_TrueDivideObjC(op1, op2, intval, inplace, zerodivision_check);
     }
     #endif
     if (PyFloat_CheckExact(op1)) {
-        return __Pyx_Float___Pyx_PyLong_MultiplyObjC(op1, intval, zerodivision_check);
+        return __Pyx_Float___Pyx_PyLong_TrueDivideObjC(op1, intval, zerodivision_check);
     }
-    return __Pyx_Fallback___Pyx_PyLong_MultiplyObjC(op1, op2, inplace);
+    return __Pyx_Fallback___Pyx_PyLong_TrueDivideObjC(op1, op2, inplace);
 }
 #endif
 
@@ -7503,12 +7869,6 @@ static int __Pyx_fix_up_extension_type_from_spec(PyType_Spec *spec, PyTypeObject
         PyType_Modified(type);
 #endif  // PY_VERSION_HEX > 0x030900B1
     return 0;
-}
-
-/* PyObjectCallNoArg */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
-    PyObject *arg[2] = {NULL, NULL};
-    return __Pyx_PyObject_FastCall(func, arg + 1, 0 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
 }
 
 /* PyObjectCallMethod0 */

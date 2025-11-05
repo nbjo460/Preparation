@@ -1,7 +1,7 @@
 import logging
 from logging.handlers import RotatingFileHandler
 import os
-
+from pathlib import Path
 from utils.config import LoggerConfig
 
 
@@ -9,8 +9,14 @@ class AppLogger:
     _initialized_loggers = set()
 
     def __init__(self, name: str = None):
-        log_filename: str = LoggerConfig.file_name
-        os.makedirs(os.path.dirname(log_filename) or ".", exist_ok=True)
+        log_filename: str = LoggerConfig().file_name
+        logs_dir : Path = LoggerConfig().logs_folder
+        logs_dir.mkdir(parents=True, exist_ok=True)
+        log_file = logs_dir / log_filename
+        if not log_file.exists():
+            log_file.touch()
+
+
 
         if not name:
             name = __name__
@@ -31,7 +37,7 @@ class AppLogger:
 
             # לקובץ
             file_handler = RotatingFileHandler(
-                log_filename,
+                log_file,
                 maxBytes=2 * 1024 * 1024,  # 5MB
                 backupCount=3,
                 encoding="utf-8",
@@ -47,6 +53,9 @@ class AppLogger:
             self.logger.addHandler(file_handler)
 
             AppLogger._initialized_loggers.add(name)
+
+            if __name__  == name:
+                self.logger.info("The app run...")
 
     def info(self, msg: str):
         self.logger.info(msg)
