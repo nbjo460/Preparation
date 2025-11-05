@@ -1,16 +1,11 @@
-import math
 import struct
 import time
 import cProfile
-import pstats
-from os import cpu_count
 from typing import Any, Generator
-# from parser_core import read_massages, get_value_by_format, read_fmt_massage, decode_msg
-from py_cy import get_value_by_format  # ← Cython
-# from pymavlink import mavutil
+from pymavlink import mavutil
 
-# from pymavlink.CSVReader import CSVMessage
-# from utils.logger import AppLogger
+from pymavlink.CSVReader import CSVMessage
+from utils.logger import AppLogger
 mavl = []
 CHECK = 7596916 - 180
 pr = cProfile.Profile()
@@ -35,22 +30,23 @@ class CoordinateExtractor:
         remain_info_in_file = True
         counter = 0
         while remain_info_in_file:
-            gps_massage: mav = mav.recv_match(blocking = True)
+            gps_massage: mav = mav.recv_match(blocking = False)
+            yield gps_massage
             if gps_massage is None:
                 break
-            gps_massage = gps_massage.to_dict()
-            if gps_massage["mavpackettype"] == "FMT":
-                continue
-            counter += 1
-            mavl.append(gps_massage)
-            if counter == CHECK: break
-            continue
-            if gps_massage.I == 1:
-                lat: float = gps_massage.Lat
-                lon: float = gps_massage.Lng
-                coordinates.append((lat, lon))
-        self.logger.debug(f"Found {len(coordinates)} Coordinates.")
-        return coordinates
+            # gps_massage = gps_massage.to_dict()
+            # # if gps_massage["mavpackettype"] == "FMT":
+            # #     continue
+            # counter += 1
+            # mavl.append(gps_massage)
+            # if counter == CHECK: break
+            # continue
+        #     if gps_massage.I == 1:
+        #         lat: float = gps_massage.Lat
+        #         lon: float = gps_massage.Lng
+        #         coordinates.append((lat, lon))
+        # self.logger.debug(f"Found {len(coordinates)} Coordinates.")
+        # return coordinates
 
 
 path = r"C:\Users\Menachem\Desktop\9900\Hafifa\log_file_test_01.bin"
@@ -124,7 +120,7 @@ STRING_SET = {"n", "N", "Z"}
 
 result = {"col":None}
 # @profile
-def get_value_by_formate(payload: memoryview, types: str, cols_list: list[str], type_msg: int, header_to_skip : int, num_of_cols : int):
+def get_value_by_format(payload: memoryview, types: str, cols_list: list[str], type_msg: int, header_to_skip : int, num_of_cols : int):
     struct_fmt = get_struct_for_type(type_msg, types)
     values = struct_fmt.unpack_from(payload, offset=header_to_skip)  # פענוח מלא בבת אחת
     # cols_list = cols.split(",")
@@ -472,19 +468,25 @@ if __name__ == "__main__":
     from functools import partial
 
     with open(path, "rb") as file:
+        # c = CoordinateExtractor()
+        # for num, msg in enumerate(c.from_bin(path, [])):
+        #     t = msg
+            # if num %3500000 == 0:
+            #     print(num, msg)
+
         data = file.read()
         data = memoryview(data)
-
+        #
         read_only_fmt(data)
-        print(f"found{len(fmt_massages)}")
-
-        # freeze_support()
-        messages_readable = process_in_parallel(path, 6, read_massages_by_chuncks_return_msg)
+        # print(f"found{len(fmt_massages)}")
+        #
+        # # freeze_support()
+        # messages_readable = process_in_parallel(path, 8, read_massages_by_chuncks_return_msg)
         # leng = len(messages_readable)
         # print(leng)
         # c = 0
-        # for msg in read_massages(data):
-        #     c = msg
+        for msg in read_massages(data):
+            c = msg
         #     pass
         # print(c)
         end = time.time()

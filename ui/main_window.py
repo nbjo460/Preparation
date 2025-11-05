@@ -1,7 +1,7 @@
 import flet as ft
 
 from ui.map_view import MapView
-from services.coordinate_extractor import CoordinateExtractor
+from business_logic.messages_extractor import CoordinateExtractor
 from utils.logger import AppLogger
 
 
