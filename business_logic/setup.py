@@ -1,21 +1,17 @@
-from setuptools import setup
+from setuptools import setup, Extension
 from Cython.Build import cythonize
-from setuptools.extension import Extension
-import os
 
-ext_modules = [
+extensions = [
     Extension(
-        name="coordinate_extractor_cy",
-        sources=[os.path.join("coordinate_extractor_cy.pyx")],
-        language="c",
+        "reader_fast",
+        ["reader_fast.pyx"],
+        extra_compile_args=["-O3", "-march=native", "-ffast-math"],
     )
 ]
 
 setup(
-    name="coordinate_extractor_cy",
-    ext_modules=cythonize(
-        ext_modules,
-        compiler_directives={"language_level": 3},
-        build_dir="build",  # אפשר גם להשאיר ברירת מחדל
-    ),
+    name="reader_fast",
+    ext_modules=cythonize(extensions, compiler_directives={
+        "language_level":3, "boundscheck":False, "wraparound":False, "cdivision":True
+    })
 )

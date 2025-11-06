@@ -15,6 +15,9 @@ class MultiProcessReader:
     def __init__(self):
         self.reader = Reader()
         self.chunk_splitter = ChunkSplitter()
+        # self.logger = Logger(__class__.__name__)
+
+
 
     @staticmethod
     def read_chunk_messages(num_chunk: int, data: memoryview, to_round: bool, fmt_messages: dict, wanted_type : str):
@@ -29,7 +32,7 @@ class MultiProcessReader:
         # messages=[]
         return num_chunk, messages
 
-    def process_in_parallel(self, file_path: str, num_workers: int, to_round : bool, wanted_type :str):
+    def process_in_parallel(self, file_path: str, num_workers: int, to_round : bool, wanted_type):
         a = time.time()
         with open(file_path, "rb") as file:
             import mmap

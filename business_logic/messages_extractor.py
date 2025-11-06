@@ -21,7 +21,7 @@ class MessagesExtractor:
 
 
 
-    def from_bin(self, path: str, to_round : bool= False, run_mode : RunMode = RunMode.NORMAL, num_workers : int = 8):
+    def from_bin(self, path: str, to_round : bool= False, run_mode : RunMode = RunMode.NORMAL, num_workers : int = 8, wanted_type : str = ""):
         """
         :param path: Path of a bin file.
         :return: List of all messages who founds.
@@ -32,31 +32,31 @@ class MessagesExtractor:
                 with open(path, "rb") as file:
                     data = memoryview(file.read())
                 self._logger.info(f"Opened a file length: {len(data)}")
-                yield from self._reader.read_messages(data, to_round=to_round)
+                yield from self._reader.read_messages(data, to_round=to_round, wanted_type=wanted_type)
             case RunMode.MULTIPROCESS:
-                for message in self._multi_processor_reader.process_in_parallel(path, num_workers, to_round):
+                for message in self._multi_processor_reader.process_in_parallel(path, num_workers, to_round, wanted_type=wanted_type):
                     yield message
             case RunMode.THREADS:
-                for message in self._thread_reader.process_in_parallel(path,num_workers, to_round):
+                for message in self._thread_reader.process_in_parallel(path,num_workers, to_round, wanted_type=wanted_type):
                     yield message
 
 
 if __name__ == "__main__":
-    start = time.time()
+    runners_mode = {RunMode.NORMAL, RunMode.MULTIPROCESS, RunMode.THREADS}
+    # runners_mode = {RunMode.NORMAL}
 
-    path = r"C:\Users\Menachem\Desktop\9900\Hafifa\log_file_test_01.bin"
-    coordinate_ex = MessagesExtractor()
+    for mode in runners_mode:
+        start = time.time()
 
-    counter = 0
-    for  num , msg in enumerate(coordinate_ex.from_bin(path, True, run_mode=RunMode.NORMAL, num_workers=8)):
-        c = msg
-        print(c)
-        counter+=1
-        if counter == 1000: break
+        path = r"C:\Users\Menachem\Desktop\9900\Hafifa\log_file_test_01.bin"
+        coordinate_ex = MessagesExtractor()
 
-    print(f"Got {counter} messages.")
+        counter = 0
+        for  num , msg in enumerate(coordinate_ex.from_bin(path, True, run_mode=RunMode.MULTIPROCESS, num_workers=8, wanted_type="")):
+            c = msg
+            counter+=1
 
+        print(f"Got {counter} messages.")
+        end = time.time()
+        print(f"Elapsed time: {end - start:.6f} seconds, to run mode: {mode}")
 
-    end = time.time()
-
-    print(f"Elapsed time: {end - start:.6f} seconds")
