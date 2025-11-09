@@ -23,7 +23,7 @@ class MultiProcessReader:
         #     reader._compile_processing(type_msg, msg_config["Format"], msg_config["cols"])
         # print(f"Process num: {num_chunk} start to work.")
         reader.fmt_messages = fmt_messages
-        reader.compile_all_structs()
+        # reader.compile_all_structs()
         messages = []
 
         for msg in reader.read_messages(data, to_round, MessageType.ALL_MESSAGES, fmt_messages, wanted_type):

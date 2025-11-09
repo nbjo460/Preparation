@@ -51,12 +51,12 @@ if __name__ == "__main__":
         path = r"C:\Users\Menachem\Desktop\9900\Hafifa\log_file_test_01.bin"
         coordinate_ex = MessagesExtractor()
 
-        counter = 0
+        # counter = 0
         for  num , msg in enumerate(coordinate_ex.from_bin(path, True, run_mode=mode, num_workers=8, wanted_type="")):
             c = msg
-            counter+=1
+            # counter+=1
 
-        print(f"Got {counter} messages.")
+        # print(f"Got {counter} messages.")
         end = time.time()
         print(f"Elapsed time: {end - start:.6f} seconds, to run mode: {mode}")
 
