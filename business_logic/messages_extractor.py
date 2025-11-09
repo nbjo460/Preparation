@@ -42,8 +42,8 @@ class MessagesExtractor:
 
 
 if __name__ == "__main__":
-    # runners_mode = {RunMode.NORMAL, RunMode.MULTIPROCESS, RunMode.THREADS}
-    runners_mode = {RunMode.MULTIPROCESS}
+    runners_mode = {RunMode.NORMAL, RunMode.MULTIPROCESS, RunMode.THREADS}
+    # runners_mode = {RunMode.MULTIPROCESS}
 
     for mode in runners_mode:
         start = time.time()
@@ -52,8 +52,9 @@ if __name__ == "__main__":
         coordinate_ex = MessagesExtractor()
 
         # counter = 0
-        for  num , msg in enumerate(coordinate_ex.from_bin(path, True, run_mode=mode, num_workers=8, wanted_type="")):
-            c = msg
+        [msg for msg in coordinate_ex.from_bin(path, True, run_mode=mode, num_workers=8, wanted_type="")]
+        # for  msg in coordinate_ex.from_bin(path, True, run_mode=mode, num_workers=8, wanted_type=""):
+        #     c = msg
             # counter+=1
 
         # print(f"Got {counter} messages.")

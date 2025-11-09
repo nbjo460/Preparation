@@ -19,11 +19,7 @@ class MultiProcessReader:
     @staticmethod
     def read_chunk_messages(num_chunk: int, data: bytes, to_round: bool, fmt_messages: dict, wanted_type : str):
         reader = Reader()
-        # for type_msg, msg_config in fmt_messages.items():
-        #     reader._compile_processing(type_msg, msg_config["Format"], msg_config["cols"])
-        # print(f"Process num: {num_chunk} start to work.")
         reader.fmt_messages = fmt_messages
-        # reader.compile_all_structs()
         messages = []
 
         for msg in reader.read_messages(data, to_round, MessageType.ALL_MESSAGES, fmt_messages, wanted_type):
@@ -55,5 +51,5 @@ class MultiProcessReader:
                 all_messages.extend(list_msg)
             c = time.time()
             print(c - b, "sec, to sort")
-        print(len(all_messages))
+        # print(len(all_messages))
         return all_messages

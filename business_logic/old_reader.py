@@ -54,16 +54,16 @@ class Reader:
         fmt_length = data[num + 4]
         fmt_name = self.decode_msg(data[num + 5:num + 9])
         fmt_format = self.decode_msg(data[num + 9:num + 25])
-        fmt_cols = self.decode_msg(data[num + 25:num + 89]).split(",")
+        fmt_cols = self.decode_msg(data[num + 25:num + 89])
 
         msg_config = {
             "mavpackettype": "FMT",
             "Name": fmt_name,
             "Length": fmt_length,
             "Format": fmt_format,
-            "Columns": ",".join(fmt_cols),
+            "Columns": fmt_cols,
             "Type": fmt_type,
-            "cols": fmt_cols
+            "cols": fmt_cols.split(",")
         }
 
         self.fmt_messages[fmt_type] = msg_config
