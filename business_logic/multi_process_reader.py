@@ -17,11 +17,13 @@ class MultiProcessReader:
         self.chunk_splitter = ChunkSplitter()
 
     @staticmethod
-    def read_chunk_messages(num_chunk: int, data: memoryview, to_round: bool, fmt_messages: dict, wanted_type : str):
+    def read_chunk_messages(num_chunk: int, data: bytes, to_round: bool, fmt_messages: dict, wanted_type : str):
         reader = Reader()
-        for type_msg, msg_config in fmt_messages.items():
-            reader._compile_processing(type_msg, msg_config["Format"], msg_config["cols"])
-        print(f"Process num: {num_chunk} start to work.")
+        # for type_msg, msg_config in fmt_messages.items():
+        #     reader._compile_processing(type_msg, msg_config["Format"], msg_config["cols"])
+        # print(f"Process num: {num_chunk} start to work.")
+        reader.fmt_messages = fmt_messages
+        reader.compile_all_structs()
         messages = []
 
         for msg in reader.read_messages(data, to_round, MessageType.ALL_MESSAGES, fmt_messages, wanted_type):
@@ -32,9 +34,10 @@ class MultiProcessReader:
     def process_in_parallel(self, file_path: str, num_workers: int, to_round : bool, wanted_type :str):
         a = time.time()
         with open(file_path, "rb") as file:
-            import mmap
-            data = mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ)
-            for _ in self.reader.read_messages(data=memoryview(data), to_round=to_round, message_type_to_read=MessageType.FMT_MESSAGE):
+            # import mmap
+            # data = mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ)
+            data = file.read()
+            for _ in self.reader.read_messages(data=data, to_round=to_round, message_type_to_read=MessageType.FMT_MESSAGE):
                 pass
         fmt_messages = self.reader.fmt_messages
         chunks: dict = self.chunk_splitter.split(file_path, data, num_workers, fmt_messages)
