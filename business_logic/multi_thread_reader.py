@@ -1,6 +1,6 @@
 import time
 from concurrent.futures.thread import ThreadPoolExecutor
-from business_logic.reader import Reader
+from business_logic.old_reader import Reader
 from utils.enums import MessageType
 from utils.chunk_splitter import ChunkSplitter
 

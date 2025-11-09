@@ -1,7 +1,7 @@
 import time
 from logging import Logger
 
-from reader import Reader
+from old_reader import Reader
 from utils.enums import MessageType
 from utils.chunk_splitter import ChunkSplitter
 from multiprocessing import Pool
